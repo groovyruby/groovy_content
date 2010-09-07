@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe HomeController do
-
+  fixtures :sites
+  
   describe "GET 'index'" do
     it "should be successful" do
       get 'index'

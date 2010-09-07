@@ -6,20 +6,20 @@ describe Admin::PagesController do
 
   before(:each) do
     @user = users(:admin)
-    @site = mock_model(Site, {:id=>1, :title=>"domain", :domain=>"domain.com"})
-    Site.should_receive(:find).and_return(@site)
+    @site = mock_model(Site)
+    Site.stub(:find).and_return(@site)
     sign_in @user
     session[:site] = @site.id
   end
 
   def mock_page(stubs={})
     @mock_page ||= mock_model(Page, stubs).as_null_object
-    @mock_page
   end
 
   describe "GET index" do
     it "assigns all pages as @pages" do
-      Page.stub(:all) { [mock_page] }
+      mp = mock_page
+      controller.stub_chain(:current_site, :pages, :all).and_return([mp])
       get :index
       assigns(:pages).should eq([mock_page])
     end
@@ -27,7 +27,8 @@ describe Admin::PagesController do
 
   describe "GET show" do
     it "assigns the requested page as @page" do
-      Page.stub(:find).with("37") { mock_page }
+      mp = mock_page
+      controller.stub_chain(:current_site, :pages, :find).and_return(mp)
       get :show, :id => "37"
       assigns(:page).should be(mock_page)
     end
@@ -43,7 +44,8 @@ describe Admin::PagesController do
 
   describe "GET edit" do
     it "assigns the requested page as @page" do
-      Page.stub(:find).with("37") { mock_page }
+      mp = mock_page
+      controller.stub_chain(:current_site, :pages, :find).and_return(mp)
       get :edit, :id => "37"
       assigns(:page).should be(mock_page)
     end
@@ -85,19 +87,22 @@ describe Admin::PagesController do
 
     describe "with valid params" do
       it "updates the requested page" do
-        Page.should_receive(:find).with("37") { mock_page }
+        mp = mock_page
+        controller.stub_chain(:current_site, :pages, :find).and_return(mp)
         mock_page.should_receive(:update_attributes).with({'these' => 'params'})
         put :update, :id => "37", :page => {'these' => 'params'}
       end
 
       it "assigns the requested page as @page" do
-        Page.stub(:find) { mock_page(:update_attributes => true) }
+        mp = mock_page(:update_attributes => true)
+        controller.stub_chain(:current_site, :pages, :find).and_return(mp)
         put :update, :id => "1"
         assigns(:page).should be(mock_page)
       end
 
       it "redirects to the page" do
-        Page.stub(:find) { mock_page(:update_attributes => true) }
+        mp = mock_page(:update_attributes => true)
+        controller.stub_chain(:current_site, :pages, :find).and_return(mp)
         put :update, :id => "1"
         response.should redirect_to(admin_page_url(mock_page))
       end
@@ -105,13 +110,15 @@ describe Admin::PagesController do
 
     describe "with invalid params" do
       it "assigns the page as @page" do
-        Page.stub(:find) { mock_page(:update_attributes => false) }
+        mp = mock_page(:update_attributes => false)
+        controller.stub_chain(:current_site, :pages, :find).and_return(mp)
         put :update, :id => "1"
         assigns(:page).should be(mock_page)
       end
 
       it "re-renders the 'edit' template" do
-        Page.stub(:find) { mock_page(:update_attributes => false) }
+        mp = mock_page(:update_attributes => false)
+        controller.stub_chain(:current_site, :pages, :find).and_return(mp)
         put :update, :id => "1"
         response.should render_template("edit")
       end
@@ -121,13 +128,15 @@ describe Admin::PagesController do
 
   describe "DELETE destroy" do
     it "destroys the requested page" do
-      Page.should_receive(:find).with("37") { mock_page }
+      mp = mock_page
+      controller.stub_chain(:current_site, :pages, :find).and_return(mp)
       mock_page.should_receive(:destroy)
       delete :destroy, :id => "37"
     end
 
     it "redirects to the pages list" do
-      Page.stub(:find) { mock_page }
+      mp = mock_page
+      controller.stub_chain(:current_site, :pages, :find).and_return(mp)
       delete :destroy, :id => "1"
       response.should redirect_to(admin_pages_url)
     end

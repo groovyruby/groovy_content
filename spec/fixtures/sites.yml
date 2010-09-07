@@ -1,0 +1,4 @@
+one:
+  title: One
+  domain: one.com
+  is_default: true

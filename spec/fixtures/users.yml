@@ -1,0 +1,4 @@
+admin:
+  email: admin@groovycontent.com
+  confirmed_at: <%= 1.days.ago.to_s :db %>
+  confirmation_sent_at: <%= 2.days.ago.to_s :db %>

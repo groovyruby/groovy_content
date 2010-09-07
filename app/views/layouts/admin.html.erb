@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>GroovyContent Administration</title>
+    <%= stylesheet_link_tag 'admin/theme', 'admin/style', 'admin/theme_blue' %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+    <!--[if IE]>
+    <%= stylesheet_link_tag 'admin/ie_sucks' %>
+    <![endif]-->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            <%= yield(:body_onload) || "" %>
+            $('#site_context_select').change(function(){
+                $(this).parents('form').submit();
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <div id="container">
+    	<div id="header">
+
+            <h2>GroovyContent Administration</h2>
+            <%= form_tag admin_dashboard_set_site_context_path do  %>
+                    Current site: <%= select_tag :site_id, options_for_select(@sites.map{|s| [s.title, s.id]}, session[:site]), :id=>"site_context_select" %>
+            <% end %>
+            <div id="topmenu">
+            	<ul>
+                	<li><%= link_to "Dashboard", admin_root_path %></li>
+                    <li><%= link_to "Sites", admin_sites_path %></li>
+                    <% if current_site %>
+                        <li><%= link_to "Pages", admin_pages_path %></li>
+                    <% end %>
+                </ul>
+
+            </div>
+        </div>
+
+        <div id="wrapper">
+            <div id="content">
+                <div id="box">
+                    <p id="notice"><%= notice %></p>
+                    <p class="alert"><%= alert %></p>
+                    <%= yield %>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div id="credits">
+                Template by <a href="http://www.bloganje.com">Bloganje</a>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

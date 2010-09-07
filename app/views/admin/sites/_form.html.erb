@@ -1,0 +1,15 @@
+<%= form_for([:admin,@site]) do |f| %>
+  <%= render :partial=>"/admin/shared/form_errors", :locals=>{:f=>f} %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :domain %><br />
+    <%= f.text_field :domain %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

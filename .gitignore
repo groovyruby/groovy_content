@@ -6,4 +6,4 @@ config/database.yml
 .idea
 db/schema.rb
 Gemfile.lock
-
+app/views/groovy*

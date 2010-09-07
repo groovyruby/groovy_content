@@ -1,14 +1,16 @@
 GroovyContent::Application.routes.draw do
+
+
+
   devise_for :users
 
-  get "home/index"
-
   # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  namespace :admin do
+    resources :pages
+    resources :sites
+    root :to => "dashboard#index"
+    match "dashboard/set_site_context", :to => "dashboard#set_site_context", :via => "post"
+  end
 
 
   root :to => "home#index"

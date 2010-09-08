@@ -3,6 +3,7 @@ class Site < ActiveRecord::Base
   scope :default, where('is_default=?', true)
 
   has_many :pages, :dependent => :destroy
+  has_many :menu_items
 
   validates :title, :presence=>true, :uniqueness=>true
   validates :domain, :presence=>true, :uniqueness=>true, :format=>{:with=>/^[a-z0-9]+[a-z0-9\.\_\-]*\.[a-z]{2,5}$/i}

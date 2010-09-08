@@ -2,10 +2,13 @@ GroovyContent::Application.routes.draw do
 
 
 
+
+
   devise_for :users
 
   # Sample resource route within a namespace:
   namespace :admin do
+    resources :menu_items
     resources :pages
     resources :sites
     root :to => "dashboard#index"

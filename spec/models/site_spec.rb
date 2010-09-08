@@ -73,10 +73,13 @@ describe Site do
     s2.is_default.should == false
   end
 
-  it "should create templates" do
+  it "should create related records" do
     s1 = Site.create(@valid)
     s1.reload
     s1.templates.where("name=?", "layout").first.should_not be_nil
     s1.templates.where("name=?", "page").first.should_not be_nil
+    s1.templates.where('name=?', 'head').first.should_not be_nil
+    s1.menu_items.where('name=?', 'home page').first.should_not be_nil
+    s1.pages.where('title=?', 'Home page').first.should_not be_nil
   end
 end

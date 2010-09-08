@@ -4,6 +4,7 @@ describe MenuItem do
   before(:each) do
     MenuItem.delete_all
     @site = Site.create!(:title=>"Google", :domain=>"google.com")
+    @site.menu_items.delete_all
     @valid = {:name=>"test menu item"}
   end
 
@@ -62,6 +63,7 @@ describe MenuItem do
 
     # second site
     s = Site.create!(:title=>"Google.pl", :domain=>"google.pl")
+    s.menu_items.delete_all
     mi3 = MenuItem.new(@valid)
     mi3.site = s
     mi3.save!

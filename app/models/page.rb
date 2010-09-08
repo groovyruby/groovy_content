@@ -15,4 +15,10 @@ class Page < ActiveRecord::Base
     self.slug = self.title.parameterize if self.slug.blank? and not self.title.blank?
   end
 
+  def to_liquid
+    { "title"  => self.title,
+      "content" => self.content }
+  end
+
+
 end

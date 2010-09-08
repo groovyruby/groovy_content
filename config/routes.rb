@@ -1,5 +1,9 @@
 GroovyContent::Application.routes.draw do
 
+  get "pages/index"
+
+  get "pages/show"
+
   devise_for :users
 
   # Sample resource route within a namespace:
@@ -13,7 +17,7 @@ GroovyContent::Application.routes.draw do
   end
 
 
-  root :to => "home#index"
+  root :to => "pages#index"
 
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

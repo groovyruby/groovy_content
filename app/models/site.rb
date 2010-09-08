@@ -15,7 +15,7 @@ class Site < ActiveRecord::Base
   before_save :lowercase_domain
   before_save :mark_as_default
   after_save :take_care_of_default_site
-  after_create :create_templates
+  after_create :create_required_records
 
 
   def lowercase_domain
@@ -38,12 +38,18 @@ class Site < ActiveRecord::Base
     self.title
   end
 
-  def create_templates
-    t1 = self.templates.new({:name=>'layout'})
+  def create_required_records
+    t1 = self.templates.new({:name=>'layout', :content=>"Layout <br /> :D\n{% block content %}\n{% endblock %}\n"})
     t1.save
-    t2 = self.templates.new({:name=>'page'})
+    t2 = self.templates.new({:name=>'page', :content=>"{% extends layout %}\n{% block content %}\n{{page.title}}\n{% endblock %}\n"})
     t2.save
-
+    t3 = self.templates.new({:name=>'head'})
+    t3.save
+    p1 = self.pages.new({:title=>'Home page'})
+    p1.save
+    mi1 = self.menu_items.new({:name=>'home page'})
+    mi1.linkable = p1
+    mi1.save
 
   end
 end

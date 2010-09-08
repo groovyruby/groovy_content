@@ -9,6 +9,7 @@ gem 'mysql2'
 
 gem 'devise'
 
+gem 'liquid', :git => "git://github.com/locomotivecms/liquid.git"
 
 
 group :test, :development do

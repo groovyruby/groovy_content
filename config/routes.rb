@@ -1,9 +1,5 @@
 GroovyContent::Application.routes.draw do
 
-
-
-
-
   devise_for :users
 
   # Sample resource route within a namespace:
@@ -11,6 +7,7 @@ GroovyContent::Application.routes.draw do
     resources :menu_items
     resources :pages
     resources :sites
+    resources :templates
     root :to => "dashboard#index"
     match "dashboard/set_site_context", :to => "dashboard#set_site_context", :via => "post"
   end

@@ -377,3 +377,14 @@ form#form #button1:hover, form#form #button2:hover {
 .report_seo{background:transparent url(img/icons/report_link.png) no-repeat left;}
 .modules{background:transparent url(img/icons/bricks.png) no-repeat left;}
 .modules_manage{background:transparent url(img/icons/bricks_gear.png) no-repeat left;}
+
+input, select, label{
+    font-family: Monaco, verdana;
+    font-size: 10pt;
+}
+
+textarea{
+    width: 100%;
+    font-size: 10pt;
+    font-family: Monaco, courier;
+}

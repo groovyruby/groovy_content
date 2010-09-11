@@ -13,7 +13,9 @@
         $(document).ready(function(){
             <%= yield(:body_onload) || "" %>
             $('#site_context_select').change(function(){
-                $(this).parents('form').submit();
+                if($(this).val()!=''){
+                    $(this).parents('form').submit();
+                }
             })
         });
     </script>
@@ -25,7 +27,7 @@
 
             <h2>GroovyContent Administration</h2>
             <%= form_tag admin_dashboard_set_site_context_path do  %>
-                    Current site: <%= select_tag :site_id, options_for_select(@sites.map{|s| [s.title, s.id]}, session[:site]), :id=>"site_context_select" %>
+                    Current site: <%= select_tag :site_id, options_for_select(['','']|@sites.map{|s| [s.title, s.id]}, session[:site]), :id=>"site_context_select" %>
             <% end %>
             <div id="topmenu">
             	<ul>
@@ -33,7 +35,8 @@
                     <li><%= link_to "Sites", admin_sites_path %></li>
                     <% if current_site %>
                         <li><%= link_to "Pages", admin_pages_path %></li>
-                        <li><%= link_to "Pages", admin_menu_items_path %></li>
+                        <li><%= link_to "Menu items", admin_menu_items_path %></li>
+                        <li><%= link_to "Templates", admin_templates_path %></li>
                     <% end %>
                 </ul>
 

@@ -4,11 +4,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>GroovyContent Administration</title>
     <%= stylesheet_link_tag 'admin/theme', 'admin/style', 'admin/theme_blue' %>
-    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag 'jquery', 'rails', 'admin' %>
     <%= csrf_meta_tag %>
     <!--[if IE]>
     <%= stylesheet_link_tag 'admin/ie_sucks' %>
     <![endif]-->
+    <%= yield(:head) || "" %>
     <script type="text/javascript">
         $(document).ready(function(){
             <%= yield(:body_onload) || "" %>

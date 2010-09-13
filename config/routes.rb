@@ -1,5 +1,7 @@
 GroovyContent::Application.routes.draw do
 
+  resources :property_types
+
   get "pages/index"
 
   get "pages/show"

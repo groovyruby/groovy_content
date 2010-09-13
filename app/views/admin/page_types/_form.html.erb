@@ -1,4 +1,11 @@
 <%= form_for([:admin, @page_type]) do |f| %>
+  <% content_for :head do %>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        nested_forms['property_type'] = "<%= generate_template(f, :property_types) %>";
+      });
+    </script>
+  <% end %>
   <%= render :partial=>"/admin/shared/form_errors", :locals=>{:f=>f} %>
 
   <div class="field">
@@ -9,6 +16,13 @@
     <%= f.label :slug %><br />
     <%= f.text_field :slug %>
   </div>
+  <div id="property_types_fields">
+    <%= f.fields_for :property_types do |fpt| %>
+      <%= render :partial=>"property_type", :locals=>{:f=>fpt}%>
+    <% end %>
+  </div>
+  <a name="property_rype"></a>
+  <%= link_to 'Add', '#property_type', :class => "add_nested_item", :rel => "property_type" %><br />
   <div class="actions">
     <%= f.submit %>
   </div>

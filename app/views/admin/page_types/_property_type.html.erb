@@ -12,4 +12,7 @@
     <%= f.label :field_type %><br />
     <%= f.select :field_type, options_for_select(PropertyType::FIELD_TYPES) %>
   </div>
+  <div class="field">
+    <%= f.text_field :_destroy %>
+  </div>
 </div>

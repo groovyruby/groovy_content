@@ -16,12 +16,12 @@
     <%= f.label :slug %><br />
     <%= f.text_field :slug %>
   </div>
-  <div id="property_types_fields">
+  <fieldset id="property_types_fields">
     <%= f.fields_for :property_types do |fpt| %>
       <%= render :partial=>"property_type", :locals=>{:f=>fpt}%>
     <% end %>
-  </div>
-  <a name="property_rype"></a>
+  </fieldset>
+  <a name="property_type"></a>
   <%= link_to 'Add', '#property_type', :class => "add_nested_item", :rel => "property_type" %><br />
   <div class="actions">
     <%= f.submit %>

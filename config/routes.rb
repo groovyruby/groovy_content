@@ -11,7 +11,9 @@ GroovyContent::Application.routes.draw do
   # Sample resource route within a namespace:
   namespace :admin do
     resources :menu_items
-    resources :page_types
+    resources :page_types do
+      get 'list_type', :on=>:member
+    end
     resources :pages
     resources :sites
     resources :templates

@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe Admin::PagesController do
   include Devise::TestHelpers
-  fixtures :users
+  fixtures :users, :sites, :page_types, :property_types
 
   before(:each) do
     @user = users(:admin)
-    @site = mock_model(Site)
-    Site.stub(:find).and_return(@site)
+    @site = sites(:one)
+    #Site.stub(:find).and_return(@site)
     sign_in @user
     session[:site] = @site.id
   end
@@ -39,6 +39,12 @@ describe Admin::PagesController do
       Page.stub(:new) { mock_page }
       get :new
       assigns(:page).should be(mock_page)
+    end
+
+    it "should create properties when page_type is given" do
+
+      get :new, :page_type=>page_types(:news).id
+      assigns(:page).should have(PageType.count).properties
     end
   end
 

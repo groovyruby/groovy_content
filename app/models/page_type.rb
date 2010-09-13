@@ -3,6 +3,9 @@ class PageType < ActiveRecord::Base
   belongs_to :site
 
   has_many :property_types
+#  has_many :properties
+  has_many :pages
+
 
   validates :name, :presence=>true, :uniqueness=>{:scope=>:site_id}
   validates :slug, :presence=>true, :uniqueness=>{:scope=>:site_id}

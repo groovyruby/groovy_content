@@ -3,6 +3,7 @@ class PropertyType < ActiveRecord::Base
   FIELD_TYPES = %w( text boolean file image )
 
   belongs_to :page_type
+  has_many :properties
 
   validates :name, :presence=>true
   validates :identifier, :presence=>true

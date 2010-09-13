@@ -10,6 +10,11 @@ class Admin::PageTypesController < AdminController
     end
   end
 
+  def list_type
+    @page_type = current_site.page_types.find(params[:id])
+    @pages = @page_type.pages
+  end
+
   # GET /page_types/1
   # GET /page_types/1.xml
   def show

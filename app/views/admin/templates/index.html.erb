@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Content</th>
+    <th>Updated at</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +12,7 @@
 <% @templates.each do |template| %>
   <tr>
     <td><%= template.name %></td>
-    <td><%= template.content %></td>
+    <td><%= template.updated_at %></td>
     <td><%= link_to 'Show', [:admin, template] %></td>
     <td><%= link_to 'Edit', edit_admin_template_path(template) %></td>
     <td><%= link_to 'Destroy', [:admin, template], :confirm => 'Are you sure?', :method => :delete %></td>

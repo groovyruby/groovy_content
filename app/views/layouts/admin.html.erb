@@ -9,6 +9,7 @@
     <!--[if IE]>
     <%= stylesheet_link_tag 'admin/ie_sucks' %>
     <![endif]-->
+    <%= yield(:head) || "" %>
     <script type="text/javascript">
         $(document).ready(function(){
             <%= yield(:body_onload) || "" %>

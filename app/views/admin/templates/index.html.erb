@@ -15,7 +15,7 @@
     <td><%= template.updated_at %></td>
     <td><%= link_to 'Show', [:admin, template] %></td>
     <td><%= link_to 'Edit', edit_admin_template_path(template) %></td>
-    <td><%= link_to 'Destroy', [:admin, template], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', [:admin, template], :confirm => 'Are you sure?', :method => :delete if template.is_deletable? %></td>
   </tr>
 <% end %>
 </table>

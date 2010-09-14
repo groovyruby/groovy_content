@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Admin::TemplatesController do
   include Devise::TestHelpers
-  fixtures :users
+  fixtures :users, :templates, :sites
 
   before(:each) do
     @user = users(:admin)
@@ -107,6 +107,27 @@ describe Admin::TemplatesController do
         put :update, :id => "1"
         response.should redirect_to(admin_template_url(mock_template))
       end
+
+      it "will update name if form is marked as deletable" do
+        Site.unstub(:find)
+        @site = sites(:one)
+        session[:site] = @site.id
+        tid = templates(:menu).id
+        put :update, :id => tid, :template=>{:name=>"testest"}
+        t = Template.find(tid)
+        t.name.should == "testest"
+      end
+
+      it "will not update name if form is marked as not deletable" do
+        Site.unstub(:find)
+        @site = sites(:one)
+        session[:site] = @site.id
+        tid = templates(:layout).id
+        oldname = templates(:layout).name
+        put :update, :id => tid, :template=>{:name=>"testest"}
+        t = Template.find(tid)
+        t.name.should == oldname
+      end
     end
 
     describe "with invalid params" do
@@ -129,17 +150,25 @@ describe Admin::TemplatesController do
 
   describe "DELETE destroy" do
     it "destroys the requested template" do
-      mt = mock_template
+      mt = mock_template(:is_deletable? => true)
       controller.stub_chain(:current_site, :templates, :find).and_return(mt)
       mock_template.should_receive(:destroy)
       delete :destroy, :id => "37"
     end
 
     it "redirects to the templates list" do
-      mt = mock_template
+      mt = mock_template(:is_deletable? => true)
       controller.stub_chain(:current_site, :templates, :find).and_return(mt)
       delete :destroy, :id => "1"
       response.should redirect_to(admin_templates_url)
+    end
+
+    it "does not allow deleting undeletable templates" do
+      mt = mock_template(:is_deletable? => false)
+      controller.stub_chain(:current_site, :templates, :find).and_return(mt)
+      delete :destroy, :id => "1"
+      response.should_not redirect_to(admin_templates_url)
+      response.should render_template("show")
     end
   end
 

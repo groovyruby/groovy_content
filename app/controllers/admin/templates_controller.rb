@@ -57,7 +57,7 @@ class Admin::TemplatesController < AdminController
   # PUT /templates/1.xml
   def update
     @template = current_site.templates.find(params[:id])
-
+    params[:template].delete(:name) unless @template.is_deletable?
     respond_to do |format|
       if @template.update_attributes(params[:template])
         format.html { redirect_to([:admin, @template], :notice => 'Template was successfully updated.') }
@@ -73,11 +73,17 @@ class Admin::TemplatesController < AdminController
   # DELETE /templates/1.xml
   def destroy
     @template = current_site.templates.find(params[:id])
-    @template.destroy
+
 
     respond_to do |format|
-      format.html { redirect_to(admin_templates_url) }
-      format.xml  { head :ok }
+      if @template.is_deletable?
+        @template.destroy
+        format.html { redirect_to(admin_templates_url) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action=>"show", :notice=>"Template is undeletable"}
+        format.xml { render :error, :status=>:unprocessable_entity}
+      end
     end
   end
 end

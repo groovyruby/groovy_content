@@ -1,0 +1,11 @@
+layout:
+  site: :one
+  name: "Layout"
+  content: "test"
+  is_deletable: false
+
+menu:
+  site: :one
+  name: "Menu"
+  content: "menu"
+  is_deletable: true

@@ -1,38 +1,11 @@
-<% content_for :head do %>
-    <%= stylesheet_link_tag 'codemirror/docs' %>
-    <%= javascript_include_tag 'codemirror/codemirror' %>
-    <style type="text/css">
-      .CodeMirror-line-numbers {
-        width: 2.2em;
-        color: #aaa;
-        background-color: #eee;
-        text-align: right;
-        padding-right: .3em;
-        font-size: 10pt;
-        font-family: monospace;
-        padding-top: .4em;
-      }
-    </style>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            var editor = CodeMirror.fromTextArea('template_content', {
-                height: "350px",
-                parserfile: "parsexml.js",
-                stylesheet: "/stylesheets/codemirror/xmlcolors.css",
-                path: "/javascripts/codemirror/",
-                continuousScanning: 500,
-                lineNumbers: true
-            });
-        });
-    </script>
-<% end %>
+<%= render :partial=>"codemirror" %>
 
 <%= form_for([:admin, @template]) do |f| %>
   <%= render :partial=>"/admin/shared/form_errors", :locals=>{:f=>f} %>
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :readonly=>(!@template.is_deletable?), :disabled=>(!@template.is_deletable?) %>
   </div>
   <div class="field">
     <%= f.label :content %><br />

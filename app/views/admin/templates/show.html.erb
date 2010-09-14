@@ -1,3 +1,4 @@
+<%= render :partial=>"codemirror" %>
 <p>
   <b>Name:</b>
   <%= @template.name %>
@@ -5,7 +6,7 @@
 
 <p>
   <b>Content:</b>
-  <%= @template.content %>
+<textarea rows="10" id="template_content" readonly="true"><%= @template.content %></textarea>
 </p>
 
 

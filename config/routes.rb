@@ -14,6 +14,7 @@ GroovyContent::Application.routes.draw do
       collection do
         post 'sort'
       end
+    end
     resources :page_types do
       get 'list_type', :on=>:member
     end

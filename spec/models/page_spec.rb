@@ -28,7 +28,6 @@ describe Page do
     p = Page.new
     p.site = @site
     p.should_not be_valid
-
   end
 
 end

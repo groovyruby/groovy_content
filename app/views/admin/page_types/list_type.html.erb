@@ -1,0 +1,5 @@
+<h1>Listing pages of type <%= @page_type.name %></h1>
+
+<%= render :partial => '/admin/pages/list' %>
+
+<%= link_to "Add new", new_admin_page_path(:page_type=>@page_type.to_param) %>

@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%= @page_type.name %>
+</p>
+
+<p>
+  <b>Slug:</b>
+  <%= @page_type.slug %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_page_type_path(@page_type) %> |
+<%= link_to 'Back', admin_page_types_path %>

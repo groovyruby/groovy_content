@@ -1,5 +1,7 @@
 GroovyContent::Application.routes.draw do
 
+  resources :property_types
+
   get "pages/index"
 
   get "pages/show"
@@ -12,6 +14,8 @@ GroovyContent::Application.routes.draw do
       collection do
         post 'sort'
       end
+    resources :page_types do
+      get 'list_type', :on=>:member
     end
     resources :pages
     resources :sites

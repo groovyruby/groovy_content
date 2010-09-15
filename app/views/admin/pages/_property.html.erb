@@ -1,0 +1,9 @@
+<div class="nested_fields">
+    <div class="field">
+        <%= f.hidden_field :id %>
+        <%= f.hidden_field :property_type_id %>
+        <%= f.hidden_field :page_type_id %>
+        <%= f.label :property_value, f.object.property_type.name %><br />
+        <%= f.text_field :property_value %>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="nested_fields">
+  <%= f.hidden_field :id, :as=>:hidden %>
+  <div class="field">
+    <%= f.label :name%><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :identifier%><br />
+    <%= f.text_field :identifier %>
+  </div>
+  <div class="field">
+    <%= f.label :field_type %><br />
+    <%= f.select :field_type, options_for_select(PropertyType::FIELD_TYPES) %>
+  </div>
+  <div class="field">
+    <%= f.text_field :_destroy %>
+  </div>
+</div>

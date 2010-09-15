@@ -1,0 +1,12 @@
+body_short:
+  name: "Skrócona treśc"
+  identifier: "body_short"
+  field_type: "text"
+  page_type: :news
+
+
+related:
+  name: "Powiązane"
+  identifier: "powiazane"
+  field_type: "text"
+  page_type: :news

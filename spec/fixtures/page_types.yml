@@ -1,0 +1,9 @@
+news:
+  name: "News"
+  slug: "news"
+  site: :one
+
+product:
+  name: "Products"
+  slug: "products"
+  site: :one

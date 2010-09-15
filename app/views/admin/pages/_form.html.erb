@@ -1,6 +1,6 @@
 <%= form_for([:admin, @page]) do |f| %>
   <%= render :partial=>"/admin/shared/form_errors", :locals=>{:f=>f} %>
-
+  <%= f.hidden_field :page_type_id %>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -13,6 +13,11 @@
     <%= f.label :slug %><br />
     <%= f.text_field :slug %>
   </div>
+    <fieldset id="propertys_fields">
+        <% f.fields_for :properties do |fp| %>
+            <%= render :partial=>"property", :locals=>{:f=>fp} %>
+        <% end %>
+    </fieldset>
   <div class="actions">
     <%= f.submit %>
   </div>

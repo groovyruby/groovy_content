@@ -6,7 +6,7 @@ class Page < ActiveRecord::Base
   has_many :properties
 
   validates :title, :presence=>true
-  validates :slug, :presence=>true, :format=>{:with=>/^[a-z0-9\_\-]+$/}
+  validates :slug, :presence=>true, :format=>{:with=>/^[a-z0-9\_\-]+$/}, :uniqueness=>{:scope=>:site_id}
   validates :site_id, :presence=>true
 
 
@@ -17,12 +17,20 @@ class Page < ActiveRecord::Base
   before_validation :fill_in_slug
 
   def fill_in_slug
-    self.slug = self.title.parameterize if self.slug.blank? and not self.title.blank?
+    if self.slug.blank? and not self.title.blank?
+      self.slug = "#{self.page_type.slug}-" unless self.page_type.blank?
+      self.slug = self.title.parameterize
+    end
   end
 
   def to_liquid
-    { "title"  => self.title,
+    liquid = { "title"  => self.title,
       "content" => self.content }
+    # TODO: for now this is enough.
+    self.properties.each do |p|
+      liquid[p.property_type.identifier] = p.property_value
+    end unless self.properties.blank?
+    liquid
   end
 
 

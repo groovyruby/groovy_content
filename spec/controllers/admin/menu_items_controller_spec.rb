@@ -19,7 +19,7 @@ describe Admin::MenuItemsController do
   describe "GET index" do
     it "assigns all menu_items as @menu_items" do
       mmi = mock_menu_item
-      controller.stub_chain(:current_site, :menu_items, :all).and_return([mmi])
+      controller.stub_chain(:current_site, :menu_items, :by_position, :all).and_return([mmi])
       get :index
       assigns(:menu_items).should eq([mock_menu_item])
     end

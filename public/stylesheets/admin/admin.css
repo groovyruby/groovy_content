@@ -1,0 +1,12 @@
+.handle:hover{cursor: move;}
+.ui-accordion > li{
+    font-size:1em;
+    padding:0.5em 0.5em 0.5em 0.7em;
+}
+.ui-accordion li .ui-icon{
+    float: left;
+}
+.actions {
+    float: right;
+    font-size: 0.8em;
+}

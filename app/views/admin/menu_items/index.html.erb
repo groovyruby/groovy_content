@@ -1,22 +1,44 @@
+<% content_for :head do %>
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $('#menu_items').sortable({
+            axis: 'y',
+            dropOnEmpty: false,
+            handle: '.handle',
+            cursor: 'crosshair',
+            items: 'li',
+            opacity: 0.4,
+            scroll: true,
+            update: function(){
+              $.ajax({
+                type: 'post',
+                data: $('#menu_items').sortable('serialize'),
+                dataType: 'script',
+                complete: function(request){
+                  $('#menu_items li').effect('highlight');
+                  },
+                url: '<%= sort_admin_menu_items_path %>'
+              });
+            }
+          });
+        });
+    </script>
+<% end %>
+
 <h1>Listing menu_items</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @menu_items.each do |menu_item| %>
-  <tr>
-    <td><%= menu_item.name %></td>
-    <td><%= link_to 'Show', [:admin, menu_item] %></td>
-    <td><%= link_to 'Edit', edit_admin_menu_item_path(menu_item) %></td>
-    <td><%= link_to 'Destroy', [:admin, menu_item], :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<ul id="menu_items" class="reorder ui-accordion ui-widget ui-helper-reset ui-accordion-icons">
+  <% @menu_items.each do |menu_item| %>
+    <li id="menu_item_<%= menu_item.id %>" class="ui-helper-reset ui-state-default ui-corner-all">
+        <span class="ui-icon ui-icon-carat-2-n-s handle"></span>
+        <%= link_to menu_item.name, [:admin, menu_item] %>
+        <span class="actions">
+            <%= link_to 'Edit', edit_admin_menu_item_path(menu_item) %>
+            <%= link_to 'Destroy', [:admin, menu_item], :confirm => 'Are you sure?', :method => :delete %>
+        </span>
+    </li>
+  <% end %>
+</ul>
 
 <br />
 

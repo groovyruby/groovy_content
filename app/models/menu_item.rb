@@ -1,5 +1,7 @@
 class MenuItem < ActiveRecord::Base
 
+  scope :by_position, order('position ASC')
+
   belongs_to :site
   belongs_to :linkable, :polymorphic=>true
 

@@ -2,7 +2,7 @@ class Admin::MenuItemsController < AdminController
   # GET /menu_items
   # GET /menu_items.xml
   def index
-    @menu_items = current_site.menu_items.all
+    @menu_items = current_site.menu_items.by_position.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,5 +79,15 @@ class Admin::MenuItemsController < AdminController
       format.html { redirect_to(admin_menu_items_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def sort
+    @menu_items = current_site.menu_items.by_position.all
+    @menu_items.each do |mi|
+      mi.position = params['menu_item'].index(mi.id.to_s) + 1
+      mi.save
+    end
+
+    render :nothing => true
   end
 end

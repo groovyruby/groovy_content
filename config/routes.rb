@@ -8,7 +8,11 @@ GroovyContent::Application.routes.draw do
 
   # Sample resource route within a namespace:
   namespace :admin do
-    resources :menu_items
+    resources :menu_items do
+      collection do
+        post 'sort'
+      end
+    end
     resources :pages
     resources :sites
     resources :templates

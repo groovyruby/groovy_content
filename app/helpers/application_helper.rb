@@ -13,8 +13,8 @@ module ApplicationHelper
   end
   def generate_content_for_page(page)
     Liquid::Template.file_system = GroovyContentFileSystem.new(current_site)
-    @template = Liquid::Template.parse(@page_template.content)
-    raw @template.render( 'page' => page )
+    @template = Liquid::Template.parse(@layout_template.content)
+    raw @template.render( 'page' => page, 'menu_items'=>@menu_items, 'page_type'=>page.page_type.blank? ? 'page' : page.page_type.slug )
   end
 
   def generate_html(form_builder, method, options = {})

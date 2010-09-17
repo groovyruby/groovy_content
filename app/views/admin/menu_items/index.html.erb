@@ -32,7 +32,7 @@
     <li id="menu_item_<%= menu_item.id %>" class="ui-helper-reset ui-state-default ui-corner-all">
         <span class="ui-icon ui-icon-carat-2-n-s handle"></span>
         <%= link_to menu_item.name, [:admin, menu_item] %>
-        <span class="actions">
+        <span class="list_actions">
             <%= link_to 'Edit', edit_admin_menu_item_path(menu_item) %>
             <%= link_to 'Destroy', [:admin, menu_item], :confirm => 'Are you sure?', :method => :delete %>
         </span>

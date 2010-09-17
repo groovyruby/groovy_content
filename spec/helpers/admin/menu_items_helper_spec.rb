@@ -10,5 +10,5 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe MenuItemsHelper do
+describe Admin::MenuItemsHelper do
 end

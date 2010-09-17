@@ -2,8 +2,8 @@ class PagesController < GroovyContentController
   def index
     landing = current_site.menu_items.where('is_landing=?', true).first
     if landing
-      if landing.linkable.class == Page
-        @page = landing.linkable
+      unless landing.page.blank?
+        @page = landing.page
         render :action=>"show"
       else
         redirect_to landing.url
@@ -12,6 +12,7 @@ class PagesController < GroovyContentController
   end
 
   def show
+    @page = current_site.pages.find(params[:id])
   end
 
 end

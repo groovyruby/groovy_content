@@ -4,6 +4,22 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+  <div class="field menu_item_page">
+      <%= f.label :page_id %><br />
+      <%= f.select :page_id, []|current_site.pages.all.map{|p| ["#{p.title} (#{p.slug})", p.id] } %>
+  </div>
+  <div class="field menu_item_url">
+      <%= f.label :url %><br>
+      <%= f.text_field :url %>
+  </div>
+  <div class="field">
+      <%= f.label :is_landing %><br>
+      <%= f.check_box :is_landing %>
+  </div>
+  <div class="field">
+      <%= f.label :target %><br>
+      <%= f.select :target, MenuItem::TARGETS %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,5 +1,8 @@
 class Page < ActiveRecord::Base
 
+  scope :of_type, lambda { |page_type| where("page_type_id = ?", page_type.id) }
+  scope :without_type, where('page_type_id is null')
+
   belongs_to :page_type
   belongs_to :site
   has_many :menu_items, :as=>:linkable
@@ -25,7 +28,9 @@ class Page < ActiveRecord::Base
 
   def to_liquid
     liquid = { "title"  => self.title,
-      "content" => self.content }
+      "content" => self.content,
+      'to_param' => self.to_param
+    }
     # TODO: for now this is enough.
     self.properties.each do |p|
       liquid[p.property_type.identifier] = p.property_value

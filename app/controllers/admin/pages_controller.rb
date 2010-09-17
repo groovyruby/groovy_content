@@ -2,7 +2,7 @@ class Admin::PagesController < AdminController
   # GET /pages
   # GET /pages.xml
   def index
-    @pages = current_site.pages.all
+    @pages = current_site.pages.without_type.all
 
     respond_to do |format|
       format.html # index.html.erb

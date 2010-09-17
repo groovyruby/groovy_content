@@ -4,6 +4,7 @@ class GroovyContentController < ApplicationController
   #before_filter :prepend_view_path_for_site
   before_filter :fetch_menu
   before_filter :fetch_templates
+  before_filter :fetch_pages
 
 
   helper_method :current_site
@@ -19,12 +20,17 @@ class GroovyContentController < ApplicationController
 
   protected
     def fetch_menu
-      @menu_items = current_site ? current_site.menu_items.all : []
+      @menu_items = current_site ? current_site.menu_items.by_position.all : []
+      puts @menu_items
     end
 
     def fetch_templates
       @layout_template = current_site.templates.where('name=?', 'layout').first
       @page_template = current_site.templates.where('name=?', 'page').first
+    end
+
+    def fetch_pages
+
     end
 
     def prepend_view_path_for_site

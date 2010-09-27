@@ -19,7 +19,7 @@ describe Admin::PagesController do
   describe "GET index" do
     it "assigns all pages as @pages" do
       mp = mock_page
-      controller.stub_chain(:current_site, :pages, :all).and_return([mp])
+      controller.stub_chain(:current_site, :pages, :without_type, :all).and_return([mp])
       get :index
       assigns(:pages).should eq([mock_page])
     end

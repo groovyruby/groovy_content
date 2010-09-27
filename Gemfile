@@ -7,6 +7,8 @@ gem 'rails', '3.0.0'
 
 gem 'mysql2'
 
+gem 'configatron'
+
 gem 'devise'
 
 gem 'liquid', :git => "git://github.com/locomotivecms/liquid.git"

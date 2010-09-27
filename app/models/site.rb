@@ -49,7 +49,7 @@ class Site < ActiveRecord::Base
     p1 = self.pages.new({:title=>'Home page'})
     p1.save
     mi1 = self.menu_items.new({:name=>'home page'})
-    mi1.linkable = p1
+    mi1.page = p1
     mi1.save
 
   end

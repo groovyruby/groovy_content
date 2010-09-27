@@ -39,6 +39,7 @@
                         <li><%= link_to "Page types", admin_page_types_path %></li>
                         <li><%= link_to "Menu items", admin_menu_items_path %></li>
                         <li><%= link_to "Templates", admin_templates_path %></li>
+                        <li><%= link_to "Settings", admin_setting_path %></li>
                         <% for pt in current_site.page_types.all %>
                             <li><%= link_to pt.name, list_type_admin_page_type_path(pt) %></li>
                         <% end %>

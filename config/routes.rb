@@ -17,6 +17,7 @@ GroovyContent::Application.routes.draw do
       get 'list_type', :on=>:member
     end
     resources :pages
+    resource :setting
     resources :sites
     resources :templates
     root :to => "dashboard#index"

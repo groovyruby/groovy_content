@@ -13,8 +13,13 @@ gem 'devise'
 
 gem 'liquid', :git => "git://github.com/locomotivecms/liquid.git"
 
+gem 'paperclip'
 
 group :test, :development do
   gem "rspec-rails", ">= 2.0.0.beta.20"
   gem "autotest"
+end
+
+group :development, :test do
+  gem 'web-app-theme', '>= 0.6.2'
 end

@@ -11,6 +11,7 @@ GroovyContent::Application.routes.draw do
     resources :menu_items do
       collection do
         post 'sort'
+        get 'reorder'
       end
     end
     resources :page_types do

@@ -1,45 +1,50 @@
-<% content_for :head do %>
-    <script type="text/javascript">
-        $(document).ready(function(){
-          $('#menu_items').sortable({
-            axis: 'y',
-            dropOnEmpty: false,
-            handle: '.handle',
-            cursor: 'crosshair',
-            items: 'li',
-            opacity: 0.4,
-            scroll: true,
-            update: function(){
-              $.ajax({
-                type: 'post',
-                data: $('#menu_items').sortable('serialize'),
-                dataType: 'script',
-                complete: function(request){
-                  $('#menu_items li').effect('highlight');
-                  },
-                url: '<%= sort_admin_menu_items_path %>'
-              });
-            }
-          });
-        });
-    </script>
-<% end %>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", admin_menu_items_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_menu_item_path %></li>
+      <li><%= link_to "#{t("web-app-theme.reorder", :default=>"Reorder")}", reorder_admin_menu_items_path %></li>
 
-<h1>Listing menu_items</h1>
+    </ul>
+  </div>          
+  <div class="content">          
+    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> MenuItems</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>             
+          <th class="first">ID</th>
+                    <th>
+            <%= t("activerecord.attributes.menu_item.name", :default => t("activerecord.labels.name", :default => "Name")) %>
+          </th>
+                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @menu_items.each do |menu_item| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td>
+            <%= menu_item.id %>
+          </td>
+                    <td>
+            <%= link_to menu_item.name, admin_menu_item_path(menu_item) %>
+          </td>
+                    <td>
+            <%= menu_item.created_at %>
+          </td>
+          <td class="last">
+            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_menu_item_path(menu_item) %> |
+            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_admin_menu_item_path(menu_item) %> |
+            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", admin_menu_item_path(menu_item), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+          </td>
+        </tr>          
+        <% end -%>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
-<ul id="menu_items" class="reorder ui-accordion ui-widget ui-helper-reset ui-accordion-icons">
-  <% @menu_items.each do |menu_item| %>
-    <li id="menu_item_<%= menu_item.id %>" class="ui-helper-reset ui-state-default ui-corner-all">
-        <span class="ui-icon ui-icon-carat-2-n-s handle"></span>
-        <%= link_to menu_item.name, [:admin, menu_item] %>
-        <span class="list_actions">
-            <%= link_to 'Edit', edit_admin_menu_item_path(menu_item) %>
-            <%= link_to 'Destroy', [:admin, menu_item], :confirm => 'Are you sure?', :method => :delete %>
-        </span>
-    </li>
-  <% end %>
-</ul>
-
-<br />
-
-<%= link_to 'New Menu item', new_admin_menu_item_path %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>GroovyContent Administration</title>
-    <%= stylesheet_link_tag 'admin/theme', 'admin/style', 'admin/theme_blue', 'admin/admin', 'flick/jquery-ui' %>
-    <%= javascript_include_tag 'jquery', 'jquery-ui', 'rails', 'admin' %>
-    <%= csrf_meta_tag %>
-    <!--[if IE]>
-    <%= stylesheet_link_tag 'admin/ie_sucks' %>
-    <![endif]-->
+  <title>GroovyContent</title>
+  <%= stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/kathleene/style", "web-app-theme/override", 'flick/jquery-ui', :cache => true %>
+   <%= javascript_include_tag 'jquery', 'jquery-ui', 'rails', 'admin' %>
+  <%= csrf_meta_tag %>
     <%= yield(:head) || "" %>
     <script type="text/javascript">
         $(document).ready(function(){
@@ -21,50 +17,56 @@
         });
     </script>
 </head>
-
 <body>
-    <div id="container">
-    	<div id="header">
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">GroovyContent</a></h1>
+      <div id="user-navigation">
+        <ul class="wat-cf">
+          <li><a href="#"><%= t("web-app-theme.profile", :default => "Profile") %></a></li>
+          <li><a href="#"><%= t("web-app-theme.settings", :default => "Settings") %></a></li>
+          <li><a href="/logout" class="logout"><%= t("web-app-theme.logout", :default => "Logout") %></a></li>
+        </ul>
+      </div>
+      <div id="main-navigation">
+        <ul class="wat-cf">
 
-            <h2>GroovyContent Administration</h2>
-            <%= form_tag admin_dashboard_set_site_context_path do  %>
-                    Current site: <%= select_tag :site_id, options_for_select(['','']|@sites.map{|s| [s.title, s.id]}, session[:site]), :id=>"site_context_select" %>
+        <li><%= link_to "Dashboard", admin_root_path %></li>
+        <li><%= link_to "Sites", admin_sites_path %></li>
+        <% if current_site %>
+            <li><%= link_to "Pages", admin_pages_path %></li>
+            <li><%= link_to "Page types", admin_page_types_path %></li>
+            <li><%= link_to "Menu items", admin_menu_items_path %></li>
+            <li><%= link_to "Templates", admin_templates_path %></li>
+            <li><%= link_to "Settings", admin_setting_path %></li>
+            <% for pt in current_site.page_types.all %>
+                <li><%= link_to pt.name, list_type_admin_page_type_path(pt) %></li>
             <% end %>
-            <div id="topmenu">
-            	<ul>
-                	<li><%= link_to "Dashboard", admin_root_path %></li>
-                    <li><%= link_to "Sites", admin_sites_path %></li>
-                    <% if current_site %>
-                        <li><%= link_to "Pages", admin_pages_path %></li>
-                        <li><%= link_to "Page types", admin_page_types_path %></li>
-                        <li><%= link_to "Menu items", admin_menu_items_path %></li>
-                        <li><%= link_to "Templates", admin_templates_path %></li>
-                        <li><%= link_to "Settings", admin_setting_path %></li>
-                        <% for pt in current_site.page_types.all %>
-                            <li><%= link_to pt.name, list_type_admin_page_type_path(pt) %></li>
-                        <% end %>
-                    <% end %>
-                </ul>
+        <% end %>
 
-            </div>
-        </div>
-
-        <div id="wrapper">
-            <div id="content">
-                <div id="box">
-                    <p id="notice"><%= notice %></p>
-                    <p class="alert"><%= alert %></p>
-                    <%= yield %>
-                </div>
-            </div>
-        </div>
+        </ul>
+      </div>
+    </div>    
+    <div id="wrapper" class="wat-cf">
+      <div class="flash">
+        <% flash.each do |type, message| -%>
+          <div class="message <%= type %>">
+            <p><%= message %></p>
+          </div>
+        <% end -%>
+      </div>
+      <div id="main">
+        <%= yield %>
         <div id="footer">
-            <div id="credits">
-                Template by <a href="http://www.bloganje.com">Bloganje</a>
-
-            </div>
-
+          <div class="block">
+            <p>Copyright &copy; <%= Time.now.year %> GroovyContent.</p>
+          </div>      
         </div>
-    </div>
+      </div>
+      <div id="sidebar">
+        <%= yield :sidebar %>
+      </div>
+    </div>    
+  </div>
 </body>
 </html>

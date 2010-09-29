@@ -1,25 +1,48 @@
-<h1>Listing templates</h1>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", admin_templates_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_template_path %></li>
+    </ul>
+  </div>          
+  <div class="content">          
+    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Templates</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>             
+          <th class="first">ID</th>
+                    <th>
+            <%= t("activerecord.attributes.admin_template.name", :default => t("activerecord.labels.name", :default => "Name")) %>
+          </th>
+                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @templates.each do |template| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td>
+            <%= template.id %>
+          </td>
+                    <td>
+            <%= link_to template.name, admin_template_path(template) %>
+          </td>
+                    <td>
+            <%= template.created_at %>
+          </td>
+          <td class="last">
+            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_template_path(template) %> |
+            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_admin_template_path(template) %> |
+            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", admin_template_path(template), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+          </td>
+        </tr>          
+        <% end -%>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Updated at</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @templates.each do |template| %>
-  <tr>
-    <td><%= template.name %></td>
-    <td><%= template.updated_at %></td>
-    <td><%= link_to 'Show', [:admin, template] %></td>
-    <td><%= link_to 'Edit', edit_admin_template_path(template) %></td>
-    <td><%= link_to 'Destroy', [:admin, template], :confirm => 'Are you sure?', :method => :delete if template.is_deletable? %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Template', new_admin_template_path %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

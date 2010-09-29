@@ -1,15 +1,26 @@
-<%= form_for([:admin,@site]) do |f| %>
-  <%= render :partial=>"/admin/shared/form_errors", :locals=>{:f=>f} %>
+<%= form_for [:admin, @site], :html => { :class => :form } do |f| -%>
+  <div class="group">
+    <%= f.label :title, t("activerecord.attributes.site.title", :default => "Title"), :class => :label %>
+    <%= f.text_field :title, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+  <div class="group">
+    <%= f.label :domain, t("activerecord.attributes.site.domain", :default => "Domain"), :class => :label %>
+    <%= f.text_field :domain, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
   </div>
-  <div class="field">
-    <%= f.label :domain %><br />
-    <%= f.text_field :domain %>
+
+  <div class="group">
+    <%= f.label :is_default, t("activerecord.attributes.site.is_default", :default => "Is default"), :class => :label %>
+    <%= f.check_box :is_default, :class => 'check_box' %>
+    <span class="description">Ex: a simple text</span>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+        
+<div class="group navform wat-cf">
+  <button class="button" type="submit">
+    <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>
+  </button>  
+  <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.cancel", :default => "Cancel")}") + " " + t("web-app-theme.cancel", :default => "Cancel"), admin_sites_path, :class => "button" %> 
+</div>
 <% end %>

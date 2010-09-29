@@ -1,8 +1,51 @@
-<p>
-  <b>Name:</b>
-  <%= @menu_item.name %>
-</p>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", admin_menu_items_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_menu_item_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_menu_item_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.menu_item.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
+          <%= @menu_item.name %>
+        </p>
 
 
-<%= link_to 'Edit', edit_admin_menu_item_path(@menu_item) %> |
-<%= link_to 'Back', admin_menu_items_path %>
+        <p>
+          <b><%= t("activerecord.attributes.menu_item.page", :default => t("activerecord.labels.page", :default => "Page")) %>:</b>
+          <%= @menu_item.page %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.menu_item.url", :default => t("activerecord.labels.url", :default => "Url")) %>:</b>
+          <%= @menu_item.url %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.menu_item.target", :default => t("activerecord.labels.target", :default => "Target")) %>:</b>
+          <%= @menu_item.target %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.menu_item.title", :default => t("activerecord.labels.title", :default => "Title")) %>:</b>
+          <%= @menu_item.title %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.menu_item.is_landing", :default => t("activerecord.labels.is_landing", :default => "Is landing")) %>:</b>
+          <%= @menu_item.is_landing %>
+        </p>
+
+      <div class="wat-cf">
+        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_admin_menu_item_path(@menu_item), :class => "button" %> 
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), admin_menu_item_path(@menu_item), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

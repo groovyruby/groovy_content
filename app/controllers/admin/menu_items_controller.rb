@@ -81,6 +81,16 @@ class Admin::MenuItemsController < AdminController
     end
   end
 
+  def reorder
+    @menu_items = current_site.menu_items.by_position.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @menu_items }
+    end
+
+  end
+
   def sort
     @menu_items = current_site.menu_items.by_position.all
     @menu_items.each do |mi|

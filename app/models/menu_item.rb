@@ -11,7 +11,9 @@ class MenuItem < ActiveRecord::Base
   validates :target, :inclusion=>{ :in=>MenuItem::TARGETS }
   validates :site_id, :presence=>true
 
-  attr_accessible :name, :title, :target, :url, :is_landing, :position, :page_id
+  has_attached_file :image, :styles => { :menu => Setting.get(:menu_item_image_size), :thumb => "100x100>" }
+
+  attr_accessible :name, :title, :target, :url, :is_landing, :position, :page_id, :image
 
   before_save :mark_as_landing
   after_save :take_care_of_landing_item
@@ -33,7 +35,9 @@ class MenuItem < ActiveRecord::Base
       "page" => self.page,
       "page_id" => self.page_id,
       "url" => self.url,
-      "target" => self.target
+      "target" => self.target,
+      "image"=> self.image_file_name.blank? ? '' : self.image.url(:menu)
+
     }
   end
 

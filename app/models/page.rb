@@ -44,7 +44,8 @@ class Page < ActiveRecord::Base
       "content" => self.content,
       'to_param' => self.to_param,
       'sub_pages' => self.sub_pages.all,
-      'siblings'  => self.parent.blank? ? [] : self.parent.sub_pages.all
+      'siblings'  => self.parent.blank? ? [] : self.parent.sub_pages.all,
+      'slug' => self.slug
     }
     # TODO: for now this is enough.
     self.properties.each do |p|

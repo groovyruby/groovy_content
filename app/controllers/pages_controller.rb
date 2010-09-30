@@ -12,7 +12,8 @@ class PagesController < GroovyContentController
   end
 
   def show
-    @page = current_site.pages.find(params[:id])
+    @page = current_site.pages.where('slug=?', params[:id]).first
+    @page = current_site.pages.find(params[:id]) if @page.blank?
   end
 
 end

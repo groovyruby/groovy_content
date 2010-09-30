@@ -20,7 +20,7 @@ class GroovyContentController < ApplicationController
 
   protected
     def fetch_menu
-      @menu_items = current_site ? current_site.menu_items.by_position.all : []
+      @menu_items = current_site ? current_site.menu_items.visible.by_position.all : []
       puts @menu_items
     end
 

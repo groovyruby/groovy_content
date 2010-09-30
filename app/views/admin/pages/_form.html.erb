@@ -18,14 +18,26 @@
     <%= f.text_field :slug, :class => 'text_field' %>
     <span class="description">Ex: a simple text</span>
   </div>
+  
+  <div class="group">
+    <%= f.label :parent_id, t("activerecord.attributes.page.parent_id", :default => "Parent"), :class => :label %>
+    <%= f.select :parent_id, [[]] | (f.object.new_record? ? current_site.pages : current_site.pages.where('id!=?', f.object.id)).all.map{|p| [p.title, p.id]}, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
 
 
   <div class="group">
       <fieldset id="propertys_fields">
-        <% f.fields_for :properties do |fp| %>
+        <%= f.fields_for :properties do |fp| %>
             <%= render :partial=>"property", :locals=>{:f=>fp} %>
         <% end %>
     </fieldset>
+  </div>
+  
+  <div class="group">
+    <%= f.label :template_id, t("activerecord.attributes.page.template_id", :default => "Template"), :class => :label %>
+    <%= f.select :template_id, [[]] | current_site.templates.all.map{|t| [t.name, t.id]}, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
   </div>
         
   <div class="group navform wat-cf">

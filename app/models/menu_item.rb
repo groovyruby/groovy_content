@@ -2,7 +2,8 @@ class MenuItem < ActiveRecord::Base
   TARGETS = %w{ _self _blank _top _parent }
 
   scope :by_position, order('position ASC')
-
+  scope :visible, where('is_visible=?', true)
+  
   belongs_to :site
   belongs_to :page
 
@@ -13,7 +14,7 @@ class MenuItem < ActiveRecord::Base
 
   has_attached_file :image, :styles => { :menu => Setting.get(:menu_item_image_size), :thumb => "100x100>" }
 
-  attr_accessible :name, :title, :target, :url, :is_landing, :position, :page_id, :image
+  attr_accessible :name, :title, :target, :url, :is_landing, :position, :page_id, :image, :is_visible
 
   before_save :mark_as_landing
   after_save :take_care_of_landing_item

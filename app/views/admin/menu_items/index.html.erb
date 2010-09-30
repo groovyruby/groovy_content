@@ -16,7 +16,11 @@
                     <th>
             <%= t("activerecord.attributes.menu_item.name", :default => t("activerecord.labels.name", :default => "Name")) %>
           </th>
+          <th><%= t("activerecord.attributes.menu_item.page", :default => "Page") %></th>
+          <th><%= t("activerecord.attributes.menu_item.url", :default => "URL") %></th>
+          <th><%= t("activerecord.attributes.menu_item.is_visible", :default => "Is Visible") %></th>
                     <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+                    
           <th class="last">&nbsp;</th>
         </tr>
         <% @menu_items.each do |menu_item| -%>
@@ -24,9 +28,13 @@
           <td>
             <%= menu_item.id %>
           </td>
+          
                     <td>
             <%= link_to menu_item.name, admin_menu_item_path(menu_item) %>
           </td>
+          <td><%= menu_item.page %></td>
+          <td><%= menu_item.url %></td>
+          <td><%= menu_item.is_visible %></td>
                     <td>
             <%= menu_item.created_at %>
           </td>

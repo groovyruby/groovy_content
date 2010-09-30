@@ -42,6 +42,12 @@
     <%= f.check_box :is_landing, :class => 'check_box' %>
     <span class="description">Ex: a simple text</span>
   </div>
+  
+  <div class="group">
+    <%= f.label :is_visible, t("activerecord.attributes.menu_item.is_visible", :default => "Is visible"), :class => :label %>
+    <%= f.check_box :is_visible, :class => 'check_box' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
 
         
 <div class="group navform wat-cf">

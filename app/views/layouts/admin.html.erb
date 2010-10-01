@@ -3,7 +3,8 @@
 <head>
   <title>GroovyContent</title>
   <%= stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/kathleene/style", "web-app-theme/override", 'flick/jquery-ui', :cache => true %>
-   <%= javascript_include_tag 'jquery', 'jquery-ui', 'rails', 'admin' %>
+  <%= javascript_include_tag 'jquery', 'jquery-ui', 'rails', 'admin' %>
+  <%= tinymce_managed_javascript_tag "admin/pages" %>
   <%= csrf_meta_tag %>
     <%= yield(:head) || "" %>
     <script type="text/javascript">

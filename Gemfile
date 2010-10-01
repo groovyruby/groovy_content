@@ -13,6 +13,8 @@ gem 'devise'
 
 gem 'locomotive_liquid'
 
+gem 'rmagick'
+
 gem 'paperclip'
 
 group :test, :development do

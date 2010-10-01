@@ -1,0 +1,25 @@
+pl:
+  activerecord:
+    attributes:
+      page:
+        title: 'Tytuł'
+        content: 'Treść'
+        slug: 'Adres url'
+        parent_id: 'Strona nadrzędna'
+        template_id: 'Szablon strony'
+      site:
+        title: 'Tytuł strony'
+        domain: 'Domena, pod którą ma być widoczna witryna'
+        is_default: 'Witryna domyślna?'
+      template:
+        name: 'Nazwa szablonu'
+        content: 'Zwartość'
+      menu_item:
+        name: 'Nazwa wyświetlana'
+        page: 'Strona'
+        url: 'Adres url'
+        title: 'Tytuł odnośnika'
+        target: 'Atrybut "target"'
+        image: 'Obrazek'
+        is_landing: 'Element domyślny?'
+        is_visible: 'Element widoczny?'

@@ -4,3 +4,31 @@ pl:
       sidebar:
         site_context: Aktualny kontekst
         select_site: Wybierz aktywną witrynę
+    menu_items:
+      index:
+        all: "Wszystkie elementy menu"
+      new:
+        new: "Nowy element menu"
+      edit:
+        edit: "Edycja elementu menu"
+    pages:
+      index:
+        all: "Wszystkie strony"
+      new:
+        new: "Nowa strona"
+      edit:
+        edit: "Edycja strony"
+    sites:
+      index:
+        all: "Wszystkie witryny"
+      new:
+        new: "Nowa witryna"
+      edit:
+        edit: "Edycja witryny"
+    templates:
+      index:
+        all: "Wszystkie szablony"
+      new:
+        new: "Nowy szablon"
+      edit:
+        edit: "Edycja szablonu"

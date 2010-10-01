@@ -1,0 +1,28 @@
+en:
+  forms:
+    menu_items:
+      field_descriptions:
+        name: ''
+        page: ''
+        url: ''
+        title: ''
+        target: ''
+        image: ''
+        is_landing: ''
+        visible: ''
+    pages:
+      field_descriptions:
+        title: ''
+        content: ''
+        slug: ''
+        parent: ''
+        template: ''
+    sites:
+      field_descriptions:
+        title: ''
+        domain: ''
+        is_default: ''
+    templates:
+      field_descriptions:
+        name: ''
+        content: ''

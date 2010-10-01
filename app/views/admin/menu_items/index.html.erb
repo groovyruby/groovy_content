@@ -8,7 +8,7 @@
     </ul>
   </div>          
   <div class="content">          
-    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> MenuItems</h2>
+    <h2 class="title"><%= t(".all", :default=>"All menu items")%></h2>
     <div class="inner">
       <table class="table">
         <tr>             
@@ -28,8 +28,7 @@
           <td>
             <%= menu_item.id %>
           </td>
-          
-                    <td>
+          <td>
             <%= link_to menu_item.name, admin_menu_item_path(menu_item) %>
           </td>
           <td><%= menu_item.page %></td>

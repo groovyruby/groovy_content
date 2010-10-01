@@ -1,52 +1,51 @@
 <%= form_for [:admin, @menu_item], :html => { :class => :form, :multipart=>true } do |f| -%>
-  <%= render :partial=>"/admin/shared/form_errors", :locals=>{:f=>f} %>
   <div class="group">
     <%= f.label :name, t("activerecord.attributes.menu_item.name", :default => "Name"), :class => :label %>
     <%= f.text_field :name, :class => 'text_field' %>
-    <span class="description">Ex: a simple text</span>
+    <span class="description"><%= t('forms.menu_items.field_descriptions.name')%></span>
   </div>
 
 
   <div class="group">
     <%= f.label :page_id, t("activerecord.attributes.menu_item.page", :default => "Page"), :class => :label %>
     <%= f.select :page_id, []|current_site.pages.all.map{|p| ["#{p.title} (#{p.slug})", p.id] }, {}, {:class=>"select"} %>
-    <span class="description">Ex: a simple text</span>
+    <span class="description"><%= t('forms.menu_items.field_descriptions.page')%></span>
   </div>
 
   <div class="group">
     <%= f.label :url, t("activerecord.attributes.menu_item.url", :default => "Url"), :class => :label %>
     <%= f.text_field :url, :class => 'text_field' %>
-    <span class="description">Ex: a simple text</span>
+    <span class="description"><%= t('forms.menu_items.field_descriptions.url')%></span>
   </div>
 
   <div class="group">
     <%= f.label :title, t("activerecord.attributes.menu_item.title", :default => "Title"), :class => :label %>
     <%= f.text_field :title, :class => 'text_field' %>
-    <span class="description">Ex: a simple text</span>
+    <span class="description"><%= t('forms.menu_items.field_descriptions.title')%></span>
   </div>
 
   <div class="group">
     <%= f.label :target, t("activerecord.attributes.menu_item.target", :default => "Target"), :class => :label %>
     <%= f.select :target, MenuItem::TARGETS %>
-    <span class="description">Ex: a simple text</span>
+    <span class="description"><%= t('forms.menu_items.field_descriptions.target')%></span>
   </div>
 
   <div class="group">
     <%= f.label :image, t("activerecord.attributes.menu_item.image", :default => "Image"), :class => :label %>
     <%= f.file_field :image, :class => 'file_field' %>
-    <span class="description">Ex: a simple text</span>
+    <span class="description"><%= t('forms.menu_items.field_descriptions.image')%></span>
   </div>
 
   <div class="group">
     <%= f.label :is_landing, t("activerecord.attributes.menu_item.is_landing", :default => "Is landing"), :class => :label %>
     <%= f.check_box :is_landing, :class => 'check_box' %>
-    <span class="description">Ex: a simple text</span>
+    <span class="description"><%= t('forms.menu_items.field_descriptions.is_landing')%></span>
   </div>
   
   <div class="group">
     <%= f.label :is_visible, t("activerecord.attributes.menu_item.is_visible", :default => "Is visible"), :class => :label %>
     <%= f.check_box :is_visible, :class => 'check_box' %>
-    <span class="description">Ex: a simple text</span>
+    <span class="description"><%= t('forms.menu_items.field_descriptions.is_visible')%></span>
   </div>
 
         

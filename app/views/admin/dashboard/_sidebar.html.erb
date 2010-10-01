@@ -1,13 +1,11 @@
 <div class="block notice">
-  <h3>Simple Block</h3>
+  <h3><%= t('.site_context')%></h3>
   <div class="content">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>
+      <%= form_tag admin_dashboard_set_site_context_path do  %>
+        <%= t('.select_site')%>:<br />
+        <%= select_tag :site_id, options_for_select(['','']|@sites.map{|s| [s.title, s.id]}, session[:site]), :id=>"site_context_select" %>
+      <% end %>
+    </p>
   </div>
-</div>
-<div class="block">
-  <h3>Links</h3>
-  <ul class="navigation">
-    <li><a href="#">Link 1</a></li>
-    <li><a href="#">Link 2</a></li>
-  </ul>
 </div>

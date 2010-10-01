@@ -1,3 +1,10 @@
+<%= content_for :body_onload do %>
+  $('#site_context_select').change(function(){
+    if($(this).val()!='')
+      $(this).parents('form').submit();
+  });
+<% end %>
+
 <div class="block" id="block-text">
   <div class="content">
     <h2 class="title">Dashboard</h2>

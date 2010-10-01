@@ -1,0 +1,6 @@
+pl:
+  admin:
+    dashboard:
+      sidebar:
+        site_context: Aktualny kontekst
+        select_site: Wybierz aktywną witrynę

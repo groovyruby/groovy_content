@@ -1,0 +1,6 @@
+en:
+  admin:
+    dashboard:
+      sidebar:
+        site_context: Current context
+        select_site: Select active site

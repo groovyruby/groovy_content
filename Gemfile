@@ -11,7 +11,7 @@ gem 'configatron'
 
 gem 'devise'
 
-gem 'liquid', :git => "git://github.com/locomotivecms/liquid.git"
+gem 'locomotive_liquid'
 
 gem 'paperclip'
 

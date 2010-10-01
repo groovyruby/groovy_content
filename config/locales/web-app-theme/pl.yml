@@ -1,0 +1,13 @@
+pl:
+  web-app-theme: 
+      save: Zapisz
+      cancel: Anuluj
+      list: Lista
+      edit: Edytuj
+      new: Dodaj
+      show: Pokaż
+      delete: Usuń
+      confirm: Jesteś pewien?
+      created_at: Utworzono
+      all: Wszystkie
+  

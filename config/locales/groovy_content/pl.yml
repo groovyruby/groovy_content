@@ -1,0 +1,10 @@
+pl:
+  groovy_content:
+    modules:
+      dashboard: "Kokpit"
+      sites: "Witryny"
+      pages: "Strony"
+      page_types: "Typy stron"
+      menu_items: "Menu"
+      templates: "Szablony"
+      settings: "Ustawienia"

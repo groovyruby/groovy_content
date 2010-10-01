@@ -23,3 +23,6 @@ pl:
         image: 'Obrazek'
         is_landing: 'Element domyślny?'
         is_visible: 'Element widoczny?'
+      page_type:
+        name: 'Nazwa'
+        slug: 'Identyfikator'

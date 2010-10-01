@@ -1,4 +1,4 @@
-<%= form_for([:admin, @page_type]) do |f| %>
+<%= form_for([:admin, @page_type], :html=>{:class=>:form}) do |f| %>
   <% content_for :head do %>
     <script type="text/javascript">
       $(document).ready(function(){
@@ -6,24 +6,31 @@
       });
     </script>
   <% end %>
-  <%= render :partial=>"/admin/shared/form_errors", :locals=>{:f=>f} %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <div class="group">
+    <%= f.label :name, t("activerecord.attributes.page_type.name", :default => "Name"), :class => :label %>
+    <%= f.text_field :name, :class => 'text_field' %>
+    <span class="description"><%= t('forms.page_types.field_descriptions.name')%></span>
   </div>
-  <div class="field">
-    <%= f.label :slug %><br />
-    <%= f.text_field :slug %>
+
+  <div class="group">
+    <%= f.label :slug, t("activerecord.attributes.page_type.slug", :default => "Slug"), :class => :label %>
+    <%= f.text_field :slug, :class => 'text_field' %>
+    <span class="description"><%= t('forms.page_types.field_descriptions.slug')%></span>
   </div>
-  <fieldset id="property_types_fields">
+  
+  <ol id="property_types_fields">
     <%= f.fields_for :property_types do |fpt| %>
       <%= render :partial=>"property_type", :locals=>{:f=>fpt}%>
     <% end %>
-  </fieldset>
-  <a name="property_type"></a>
+  </ol>
   <%= link_to 'Add', '#property_type', :class => "add_nested_item", :rel => "property_type" %><br />
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+        
+<div class="group navform wat-cf">
+  <button class="button" type="submit">
+    <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>
+  </button>  
+  <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.cancel", :default => "Cancel")}") + " " + t("web-app-theme.cancel", :default => "Cancel"), admin_page_types_path, :class => "button" %> 
+</div>
+
 <% end %>

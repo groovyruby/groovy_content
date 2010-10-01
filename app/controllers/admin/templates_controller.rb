@@ -44,7 +44,7 @@ class Admin::TemplatesController < AdminController
     @template.site = current_site
     respond_to do |format|
       if @template.save
-        format.html { redirect_to([:admin, @template], :notice => 'Template was successfully created.') }
+        format.html { redirect_to([:admin, @template], :notice => t('templates.notices.created', :default=>'Template was successfully created.')) }
         format.xml  { render :xml => @template, :status => :created, :location => @template }
       else
         format.html { render :action => "new" }
@@ -60,7 +60,7 @@ class Admin::TemplatesController < AdminController
     params[:template].delete(:name) unless @template.is_deletable?
     respond_to do |format|
       if @template.update_attributes(params[:template])
-        format.html { redirect_to([:admin, @template], :notice => 'Template was successfully updated.') }
+        format.html { redirect_to([:admin, @template], :notice => t('templates.notices.updated', :default=>'Template was successfully updated.')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -1,4 +1,28 @@
 pl:
+  templates:
+    notices:
+      created: "Pomyślnie dodano nowy szablon"
+      updated: "Pomyślnie zaktualizowano szablon"
+  menu_items:
+    notices:
+      created: "Pomyślnie dodano element menu"
+      updated: "Pomyślnie zaktualizowano element menu"
+  pages:
+    notices:
+      created: "Pomyślnie dodano stronę"
+      updated: "Pomyślnie zaktualizowano stronę"
+  sites:
+    notices:
+      created: "Pomyślnie dodano witrynę"
+      updated: "Pomyślnie zaktualizowano witrynę"
+  page_types:
+    notices:
+      created: "Pomyślnie utworzono nowy typ strony"
+      created: "Pomyślnie zaktualizowano typ strony"
+  settings:
+    notices:
+      settings_saved: "Zapisano ustawienia"
+  
   admin:
     dashboard:
       sidebar:
@@ -32,3 +56,11 @@ pl:
         new: "Nowy szablon"
       edit:
         edit: "Edycja szablonu"
+    page_types:
+      index:
+        all: "Wszystkie typy stron"
+      new:
+        new: "Nowy typ strony"
+      edit:
+        edit: "Edycja typu strony"
+    

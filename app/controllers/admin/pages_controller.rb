@@ -54,7 +54,7 @@ class Admin::PagesController < AdminController
     @page.site = current_site
     respond_to do |format|
       if @page.save
-        format.html { redirect_to([:admin, @page], :notice => 'Page was successfully created.') }
+        format.html { redirect_to([:admin, @page], :notice => t('pages.notices.created', :default=>'Page was successfully created.')) }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
         format.html { render :action => "new" }
@@ -70,7 +70,7 @@ class Admin::PagesController < AdminController
 
     respond_to do |format|
       if @page.update_attributes(params[:page])
-        format.html { redirect_to([:admin, @page], :notice => 'Page was successfully updated.') }
+        format.html { redirect_to([:admin, @page], :notice => t('pages.notices.updated', :default=>'Page was successfully updated.')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

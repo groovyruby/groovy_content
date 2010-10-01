@@ -44,7 +44,7 @@ class Admin::MenuItemsController < AdminController
     @menu_item.site = current_site
     respond_to do |format|
       if @menu_item.save
-        format.html { redirect_to([:admin, @menu_item], :notice => 'Menu item was successfully created.') }
+        format.html { redirect_to([:admin, @menu_item], :notice => t('menu_items.notices.created', :default=>'Menu item was successfully created.')) }
         format.xml  { render :xml => @menu_item, :status => :created, :location => @menu_item }
       else
         format.html { render :action => "new" }
@@ -60,7 +60,7 @@ class Admin::MenuItemsController < AdminController
 
     respond_to do |format|
       if @menu_item.update_attributes(params[:menu_item])
-        format.html { redirect_to([:admin, @menu_item], :notice => 'Menu item was successfully updated.') }
+        format.html { redirect_to([:admin, @menu_item], :notice => t('menu_items.notices.updated', :default=>'Menu item was successfully updated.')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

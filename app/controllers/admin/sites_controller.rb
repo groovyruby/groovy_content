@@ -42,7 +42,7 @@ class Admin::SitesController < AdminController
 
     respond_to do |format|
       if @site.save
-        format.html { redirect_to([:admin, @site], :notice => 'Site was successfully created.') }
+        format.html { redirect_to([:admin, @site], :notice => t('sites.notices.created', :default=>'Site was successfully created.')) }
         format.xml  { render :xml => @site, :status => :created, :location => @site }
       else
         format.html { render :action => "new" }
@@ -58,7 +58,7 @@ class Admin::SitesController < AdminController
 
     respond_to do |format|
       if @site.update_attributes(params[:site])
-        format.html { redirect_to([:admin, @site], :notice => 'Site was successfully updated.') }
+        format.html { redirect_to([:admin, @site], :notice => t('sites.notices.updated', :default=>'Site was successfully updated.')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

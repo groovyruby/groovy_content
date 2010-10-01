@@ -19,7 +19,7 @@ class Admin::SettingsController < AdminController
     end
 
 
-    redirect_to admin_setting_url, :notice=>t(".settings_saved")
+    redirect_to admin_setting_url, :notice=>t("settings.notices.settings_saved")
   end
 
 end

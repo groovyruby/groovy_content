@@ -15,7 +15,7 @@ class PageType < ActiveRecord::Base
 
   accepts_nested_attributes_for :property_types, :allow_destroy=>true, :reject_if=>proc{ |f| f['name'].blank? }
 
-  attr_accessible :name, :slug, :property_types_attributes
+  attr_accessible :name, :slug, :property_types_attributes, :show_content
 
   before_validation :fill_in_slug
 

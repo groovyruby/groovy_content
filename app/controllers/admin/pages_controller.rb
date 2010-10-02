@@ -31,7 +31,7 @@ class Admin::PagesController < AdminController
       @page_type = current_site.page_types.find(params[:page_type])
       @page.page_type = @page_type
       for property_type in @page_type.property_types
-        property = property_type.properties.new
+        property = property_type.properties.new(:property_type_id=>property_type.id)
         property.page_type = @page_type
         @page.properties << property
       end

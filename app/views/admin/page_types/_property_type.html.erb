@@ -11,7 +11,11 @@
   </div>
   <div class="group">
     <%= f.label :field_type, :class=>"label" %>
-    <%= f.select :field_type, options_for_select(PropertyType::FIELD_TYPES) %>
+    <%= f.select :field_type, options_for_select(PropertyType::FIELD_TYPES, f.object.field_type) %>
+  </div>
+  <div class="group">
+    <%= f.label :params, :class=>"label" %>
+    <%= f.text_field :params%>
   </div>
   <div class="group">
     <%= f.label :_destroy, :class=>"label" %>

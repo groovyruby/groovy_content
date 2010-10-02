@@ -20,7 +20,7 @@ class Page < ActiveRecord::Base
 
 
   accepts_nested_attributes_for :properties, :allow_destroy=>true
-  attr_accessible :title, :slug, :content, :properties_attributes, :parent_id, :template_id
+  attr_accessible :title, :slug, :content, :properties_attributes, :parent_id, :template_id, :page_type_id
 
 
   before_validation :fill_in_slug
@@ -50,7 +50,18 @@ class Page < ActiveRecord::Base
     }
     # TODO: for now this is enough.
     self.properties.each do |p|
-      liquid[p.property_type.identifier] = p.property_value
+      case p.property_type.field_type
+        when 'file'
+          liquid[p.property_type.identifier] = p.attachment.url
+        when 'image'
+          liquid[p.property_type.identifier+"_original"] = p.image.url
+          liquid[p.property_type.identifier+"_limited"] = p.image.url(:limited)
+          liquid[p.property_type.identifier+"_custom"] = p.image.url(:custom)
+          liquid[p.property_type.identifier+"_thumb"] = p.image.url(:thumb)
+        else
+          liquid[p.property_type.identifier] = p.property_value
+      end
+      
     end unless self.properties.blank?
     liquid
   end

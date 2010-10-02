@@ -6,11 +6,13 @@
     <span class="description"><%= t('forms.pages.field_descriptions.title')%></span>
   </div>
 
+  <% if @page.page_type.blank? or @page.page_type.show_content? %>
   <div class="group">
     <%= f.label :content, t("activerecord.attributes.page.content", :default => "Content"), :class => :label %>
     <%= f.tinymce_managed :content, :class=>"text_area" %>
     <span class="description"><%= t('forms.pages.field_descriptions.content')%></span>
   </div>
+  <% end %>
 
   <div class="group">
     <%= f.label :slug, t("activerecord.attributes.page.slug", :default => "Slug"), :class => :label %>
@@ -25,12 +27,10 @@
   </div>
 
 
-  <div class="group">
-      <fieldset id="propertys_fields">
-        <%= f.fields_for :properties do |fp| %>
-            <%= render :partial=>"property", :locals=>{:f=>fp} %>
-        <% end %>
-    </fieldset>
+  <div class="group" id="propertys_fields">
+    <%= f.fields_for :properties do |fp| %>
+      <%= render :partial=>"property", :locals=>{:f=>fp} %>
+    <% end %>
   </div>
   
   <div class="group">

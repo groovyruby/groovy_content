@@ -3,7 +3,19 @@
         <%= f.hidden_field :id %>
         <%= f.hidden_field :property_type_id %>
         <%= f.hidden_field :page_type_id %>
-        <%= f.label :property_value, f.object.property_type.name %><br />
-        <%= f.text_field :property_value %>
+        <%= f.label :property_value, f.object.property_type.name, :class=>"label" %>
+        <% if f.object.property_type.field_type == 'image'%>
+          <%= f.file_field :image %>
+          <span class="description"><%= f.object.image_file_name unless f.object.image_file_name.blank? %></span>
+        <% elsif f.object.property_type.field_type == 'file' %>
+          <%= f.file_field :attachment %>
+          <span class="description"><%= f.object.attachment_file_name unless f.object.attachment_file_name.blank? %></span>
+        <% elsif f.object.property_type.field_type == 'boolean' %>
+          <%= f.check_box :property_value, :class=>"check_box" %>
+        <% elsif f.object.property_type.field_type == 'text'%>
+          <%= f.text_area :property_value, :class=>"text_area"%>
+        <% else %>
+          <%= f.text_field :property_value, :class=>"text_field" %>
+        <% end %>
     </div>
 </div>

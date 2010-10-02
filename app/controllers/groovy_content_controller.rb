@@ -30,7 +30,10 @@ class GroovyContentController < ApplicationController
     end
 
     def fetch_pages
-
+      @collections = {'pages'=> current_site.pages.without_type.all}
+      for pt in current_site.page_types.all
+        @collections[pt.slug] = current_site.pages.of_type(pt).all
+      end
     end
 
     def prepend_view_path_for_site

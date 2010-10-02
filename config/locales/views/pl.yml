@@ -42,6 +42,8 @@ pl:
         new: "Nowa strona"
       edit:
         edit: "Edycja strony"
+      sidebar_reorder:
+        reorder_subpages: "Kolejność podstron"
     sites:
       index:
         all: "Wszystkie witryny"

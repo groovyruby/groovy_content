@@ -90,4 +90,15 @@ class Admin::PagesController < AdminController
       format.xml  { head :ok }
     end
   end
+  
+  def sort
+    @page = current_site.pages.find(params[:id])
+    @pages = @page.sub_pages.all
+    @pages.each do |p|
+      p.position = params['page'].index(p.id.to_s) + 1
+      p.save
+    end
+
+    render :nothing => true
+  end
 end

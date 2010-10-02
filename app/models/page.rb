@@ -2,6 +2,7 @@ class Page < ActiveRecord::Base
 
   scope :of_type, lambda { |page_type| where("page_type_id = ?", page_type.id) }
   scope :without_type, where('page_type_id is null')
+  scope :by_position, order('position ASC')
 
   belongs_to :page_type
   belongs_to :parent, :class_name => "Page", :foreign_key => "parent_id"

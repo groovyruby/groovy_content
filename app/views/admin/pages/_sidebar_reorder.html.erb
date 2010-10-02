@@ -1,0 +1,35 @@
+<% content_for :head do %>
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $('#pages').sortable({
+            axis: 'y',
+            dropOnEmpty: false,
+            handle: 'a',
+            cursor: 'crosshair',
+            items: 'li',
+            opacity: 0.4,
+            scroll: true,
+            update: function(){
+              $.ajax({
+                type: 'post',
+                data: $('#pages').sortable('serialize'),
+                dataType: 'script',
+                complete: function(request){
+                  $('#pages li').effect('highlight');
+                  },
+                url: '<%= sort_admin_page_path(@page.id) %>'
+              });
+            }
+          });
+        });
+    </script>
+<% end %>
+
+<div class="block">
+  <h3><%= t ".reorder_subpages", :default=>"Reorder subpages" %></h3>
+  <ul class="navigation" id="pages">
+    <% @page.sub_pages.by_position.all.each do |p| %>
+      <li id="page_<%= p.id %>"><a href="#"><%= p.title %></a></li>
+    <% end %>
+  </ul>
+</div>

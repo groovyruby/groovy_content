@@ -17,7 +17,11 @@ GroovyContent::Application.routes.draw do
     resources :page_types do
       get 'list_type', :on=>:member
     end
-    resources :pages
+    resources :pages do
+      member do
+        post 'sort'
+      end
+    end
     resource :setting
     resources :sites
     resources :templates

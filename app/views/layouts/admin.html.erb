@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GroovyContent</title>
+  <title><%= s(:instance_name) %></title>
   <%= stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/kathleene/style", "web-app-theme/override", 'flick/jquery-ui', :cache => true %>
   <%= javascript_include_tag 'jquery', 'jquery-ui', 'rails', 'admin' %>
   <%= tinymce_managed_javascript_tag "admin/pages" %>
@@ -21,7 +21,7 @@
 <body>
   <div id="container">
     <div id="header">
-      <h1><a href="/">GroovyContent</a></h1>
+      <h1><a href="/"><%= s(:instance_name) %></a></h1>
       <div id="user-navigation">
         <ul class="wat-cf">
           <li><%= link_to t("web-app-theme.logout", :default => "Logout"), destroy_user_session_path, :class=>"logout" %></a></li>
@@ -58,7 +58,7 @@
         <%= yield %>
         <div id="footer">
           <div class="block">
-            <p>Copyright &copy; <%= Time.now.year %> GroovyContent.</p>
+            <p>Copyright &copy; <%= Time.now.year %> <%= s(:instance_name) %>.</p>
           </div>      
         </div>
       </div>

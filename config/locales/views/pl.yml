@@ -36,7 +36,7 @@ pl:
       edit:
         edit: "Edycja elementu menu"
     pages:
-      index:
+      list:
         all: "Wszystkie strony"
       new:
         new: "Nowa strona"

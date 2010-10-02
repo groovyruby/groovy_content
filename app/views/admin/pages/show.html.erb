@@ -2,7 +2,7 @@
   <div class="secondary-navigation">
     <ul class="wat-cf">
       <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", admin_pages_path  %></li>
-      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_page_path %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_page_path(:page_type=>@page.page_type_id) %></li>
       <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_page_path %></li>
     </ul>
   </div>          
@@ -21,8 +21,21 @@
 
         <p>
           <b><%= t("activerecord.attributes.admin_page.content", :default => t("activerecord.labels.content", :default => "Content")) %>:</b>
-          <%= @page.content %>
+          <%= raw @page.content %>
         </p>
+        
+        <% for p in @page.properties %>
+          <p>
+            <b><%= p.property_type.name %>:</b>
+            <% if p.property_type.field_type == 'file' %>
+              <%= p.attachment_file_name %>
+            <% elsif p.property_type.field_type == 'image'%>
+              <%= p.image_file_name %>
+            <% else %>
+              <%= p.property_value %>
+            <% end %>
+          </p>
+        <% end %>
 
         
       <div class="wat-cf">

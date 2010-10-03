@@ -2,6 +2,7 @@ class Site < ActiveRecord::Base
 
   scope :default, where('is_default=?', true)
 
+  has_many :inquiries
   has_many :inquiry_forms, :dependent=>:destroy
   has_many :page_types, :dependent=>:destroy
   has_many :pages, :dependent => :destroy

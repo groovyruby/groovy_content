@@ -8,6 +8,7 @@ GroovyContent::Application.routes.draw do
 
   # Sample resource route within a namespace:
   namespace :admin do
+    resources :inquiries, :only=>[:show, :destroy]
     resources :inquiry_forms do
       get 'list_type', :on=>:member
     end

@@ -1,0 +1,41 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", list_type_admin_inquiry_form_path(@inquiry_form.id)  %></li>
+    </ul>
+  </div>          
+  <div class="content">          
+    <h2 class="title"><%= t(".all", :default => "All inquiry forms")  %> (<%= @inquiry_form.name%>)</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>             
+          <th class="first">ID</th>
+
+                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @inquiries.each do |inquiry| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td>
+            <%= inquiry.id %>
+          </td>
+          <td>
+            <%= link_to inquiry.created_at, admin_inquiry_path(inquiry) %>
+          </td>
+          <td class="last">
+            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_inquiry_path(inquiry) %> |
+            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", admin_inquiry_path(inquiry), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+          </td>
+        </tr>          
+        <% end -%>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

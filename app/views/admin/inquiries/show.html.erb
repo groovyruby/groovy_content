@@ -1,0 +1,22 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", list_type_admin_inquiry_form_path(@inquiry.inquiry_form_id)  %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_inquiry_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      <% for iv in @inquiry.inquiry_values.all %>
+        <p>
+          <b><%= iv.inquiry_field.name %>:</b>
+          <%= iv.field_value %>
+        </p>
+      <% end %>
+        
+      <div class="wat-cf"> 
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), admin_inquiry_path(@inquiry), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>

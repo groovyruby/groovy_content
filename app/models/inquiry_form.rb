@@ -1,6 +1,7 @@
 class InquiryForm < ActiveRecord::Base
   
   belongs_to :site
+  has_many :inquiries, :dependent=>:destroy
   has_many :inquiry_fields, :dependent=>:destroy
   
   validates_associated :inquiry_fields

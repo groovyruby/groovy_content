@@ -1,2 +1,9 @@
 == Welcome to GroovyContent
 
+GroovyContent is simple site managing applications (simple CMS?) that allow you to:
+- manage multiple sites
+- create multiple page types and / or collections and create for them custom attributes
+- insert rich content into your pages (wysiwyg editor with file manager support)
+- manage inquiry forms (and create custom field types)
+- edit template files without any need to use any kind of external editor and/or file transfer protocol
+- use templating language (no worry, that you, your designer or client himself will fu... break something by using Ruby in templates)

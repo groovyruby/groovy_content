@@ -43,6 +43,6 @@
     <button class="button" type="submit">
         <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>
     </button>
-    <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.cancel", :default => "Cancel")}") + " " + t("web-app-theme.cancel", :default => "Cancel"), admin_pages_path, :class => "button" %>
+    <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.cancel", :default => "Cancel")}") + " " + t("web-app-theme.cancel", :default => "Cancel"), @page.page_type.blank? ? admin_pages_path : list_type_admin_page_type_path(@page.page_type_id), :class => "button" %>
   </div>
 <% end %>

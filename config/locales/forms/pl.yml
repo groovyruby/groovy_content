@@ -14,7 +14,7 @@ pl:
       field_descriptions:
         title: ''
         content: ''
-        slug: ''
+        slug: 'Generowany automatycznie'
         parent: ''
         template: ''
     sites:

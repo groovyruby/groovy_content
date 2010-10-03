@@ -8,4 +8,4 @@ db/schema.rb
 Gemfile.lock
 app/views/groovy*
 .redcar
-
+**.DS_Store

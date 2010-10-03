@@ -1,6 +1,6 @@
 class Admin::PagesController < AdminController
   include TinymceFilemanager
-  link_classes_accepted [Page.where('title like ?', '%k%')]
+  link_classes_accepted [Page]
   # GET /pages
   # GET /pages.xml
   def index

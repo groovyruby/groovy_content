@@ -1,5 +1,9 @@
-<h1>Listing pages of type <%= @page_type.name %></h1>
-
-<%= render :partial => '/admin/pages/list' %>
-
-<%= link_to "Add new", new_admin_page_path(:page_type=>@page_type.to_param) %>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", admin_pages_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_page_path(:page_type=>@page_type.to_param) %></li>
+    </ul>
+  </div>          
+  <%= render :partial => '/admin/pages/list' %>
+</div>

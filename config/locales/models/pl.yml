@@ -26,3 +26,12 @@ pl:
       page_type:
         name: 'Nazwa'
         slug: 'Identyfikator'
+      inquiry_form:
+        name: 'Nazwa'
+        slug: 'Identyfikator'
+      inquiry_field:
+        name: 'Nazwa'
+        identifier: 'Identyfikator'
+        field_type: 'Typ pola'
+        field_options: 'Dodatkowe opcje pola'
+      

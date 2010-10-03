@@ -44,7 +44,7 @@ class Admin::InquiryFormsController < AdminController
 
     respond_to do |format|
       if @inquiry_form.save
-        format.html { redirect_to([:admin, @inquiry_form], :notice => 'Inquiry form was successfully created.') }
+        format.html { redirect_to([:admin, @inquiry_form], :notice => t('inquiry_forms.notices.created', :default=>'Inquiry form was successfully created.')) }
         format.xml  { render :xml => @inquiry_form, :status => :created, :location => @inquiry_form }
       else
         format.html { render :action => "new" }
@@ -60,7 +60,7 @@ class Admin::InquiryFormsController < AdminController
 
     respond_to do |format|
       if @inquiry_form.update_attributes(params[:inquiry_form])
-        format.html { redirect_to([:admin, @inquiry_form], :notice => 'Inquiry form was successfully updated.') }
+        format.html { redirect_to([:admin, @inquiry_form], :notice => t('inquiry_forms.notices.updated', :default=>'Inquiry form was successfully updated.')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

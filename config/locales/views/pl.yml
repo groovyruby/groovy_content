@@ -18,7 +18,11 @@ pl:
   page_types:
     notices:
       created: "Pomyślnie utworzono nowy typ strony"
-      created: "Pomyślnie zaktualizowano typ strony"
+      updated: "Pomyślnie zaktualizowano typ strony"
+  inquiry_forms:
+    notices:
+      created: "Pomyślnie utworzono nowy formularz"
+      updated: "Pomyślnie zaktualizowano formularz"
   settings:
     notices:
       settings_saved: "Zapisano ustawienia"
@@ -65,4 +69,11 @@ pl:
         new: "Nowy typ strony"
       edit:
         edit: "Edycja typu strony"
-    
+    inquiry_forms:
+      index:
+        all: "Wszystkie formularze"
+      new:
+        new: "Nowy formularz"
+      edit:
+        edit: "Edycja formularza"
+      

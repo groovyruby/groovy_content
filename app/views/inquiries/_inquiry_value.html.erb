@@ -1,0 +1,14 @@
+<div class="inquiry_field">
+  <%= f.hidden_field :inquiry_field_id %>
+  <%= f.hidden_field :inquiry_form_id %>
+  <%= f.label :field_value, f.object.inquiry_field.name, :class=>"label" %>
+  <% if f.object.inquiry_field.field_type == 'boolean' %>
+    <%= f.check_box :field_value, :class=>"check_box" %>
+  <% elsif f.object.inquiry_field.field_type == 'select' %>
+    <%= f.select :field_value, f.object.inquiry_field.field_options.split(';'), :class=>"select" %>
+  <% elsif f.object.inquiry_field.field_type == 'text'%>
+    <%= f.text_area :field_value, :class=>"text_area"%>
+  <% else %>
+    <%= f.text_field :field_value, :class=>"text_field" %>
+  <% end %>
+</div>

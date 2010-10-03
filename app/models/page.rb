@@ -10,7 +10,7 @@ class Page < ActiveRecord::Base
   belongs_to :template
   
   has_many :menu_items, :as=>:linkable
-  has_many :properties
+  has_many :properties, :dependent=>:destroy
   has_many :sub_pages, :class_name => "Page", :foreign_key => "parent_id"
 
   validates :title, :presence=>true

@@ -80,4 +80,9 @@ class Admin::InquiryFormsController < AdminController
       format.xml  { head :ok }
     end
   end
+  
+  def list_type
+    @inquiry_form = current_site.inquiry_forms.find(params[:id])
+    @inquiries = @inquiry_form.inquiries.order('created_at DESC').all
+  end
 end

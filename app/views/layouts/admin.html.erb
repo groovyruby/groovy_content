@@ -34,13 +34,19 @@
         <li><%= link_to t('groovy_content.modules.sites', :default=>"Sites"), admin_sites_path %></li>
         <% if current_site %>
             <li><%= link_to t('groovy_content.modules.pages', :default=>"Pages"), admin_pages_path %></li>
-            <li><%= link_to t('groovy_content.modules.page_types', :default=>"Page types"), admin_page_types_path %></li>
+            
             <li><%= link_to t('groovy_content.modules.menu_items', :default=>"Menu items"), admin_menu_items_path %></li>
             <li><%= link_to t('groovy_content.modules.templates', :default=>"Templates"), admin_templates_path %></li>
-            <li><%= link_to t('groovy_content.modules.settings', :default=>"Settings"), admin_setting_path %></li>
+            
             <% for pt in current_site.page_types.all %>
                 <li><%= link_to pt.name, list_type_admin_page_type_path(pt) %></li>
             <% end %>
+            <% for inf in current_site.inquiry_forms.all %>
+                <li><%= link_to inf.name, list_type_admin_inquiry_form_path(inf) %></li>
+            <% end %>
+            <li style="float: right; padding-right: 200px"><%= link_to t('groovy_content.modules.settings', :default=>"Settings"), admin_setting_path %></li>
+            <li style="float: right;"><%= link_to t('groovy_content.modules.page_types', :default=>"Page types"), admin_page_types_path %></li>
+            <li style="float: right;"><%= link_to t('groovy_content.modules.inquiry_forms', :default=>"Inquiry forms"), admin_inquiry_forms_path %></li>
         <% end %>
 
         </ul>

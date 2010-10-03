@@ -1,12 +1,16 @@
 GroovyContent::Application.routes.draw do
 
+  resources :inquiries, :only=>[:new, :create]
+
   resources :pages
 
   devise_for :users
 
   # Sample resource route within a namespace:
   namespace :admin do
-    resources :inquiry_forms
+    resources :inquiry_forms do
+      get 'list_type', :on=>:member
+    end
     resources :menu_items do
       collection do
         post 'sort'

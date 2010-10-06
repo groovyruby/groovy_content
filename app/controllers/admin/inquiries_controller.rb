@@ -16,6 +16,7 @@ class Admin::InquiriesController < AdminController
   # DELETE /inquiries/1.xml
   def destroy
     @inquiry = current_site.inquiries.find(params[:id])
+    @inquiry_form = @inquiry.inquiry_form
     @inquiry.destroy
 
     respond_to do |format|

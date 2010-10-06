@@ -26,7 +26,9 @@ pl:
   settings:
     notices:
       settings_saved: "Zapisano ustawienia"
-  
+  inquiries:
+    new:
+      submit_inquiry: "Wyślij"
   admin:
     dashboard:
       sidebar:
@@ -76,4 +78,6 @@ pl:
         new: "Nowy formularz"
       edit:
         edit: "Edycja formularza"
+      list_type:
+        all: "Wszystkie zgłoszenia"
       

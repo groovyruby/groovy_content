@@ -17,7 +17,7 @@ module ApplicationHelper
     Liquid::Template.file_system = GroovyContentFileSystem.new(current_site)
     @layout_template = page.template unless page.template.blank?
     @template = Liquid::Template.parse(@layout_template.content)
-    raw @template.render( 'page' => page, 'menu_items'=>@menu_items, 'page_type'=>page.page_type.blank? ? 'page' : page.page_type.slug, 'collections'=>@collections )
+    raw @template.render( 'page' => page, 'menu_items'=>@menu_items, 'page_type'=>page.page_type.blank? ? 'page' : page.page_type.slug, 'collections'=>@collections, 'path'=>request.path )
   end
 
   def generate_html(form_builder, method, options = {})

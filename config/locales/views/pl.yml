@@ -78,4 +78,6 @@ pl:
         new: "Nowy formularz"
       edit:
         edit: "Edycja formularza"
+      list_type:
+        all: "Wszystkie zgłoszenia"
       

@@ -25,6 +25,18 @@
     <span class="description"><%= t('forms.page_types.field_descriptions.show_content')%></span>
   </div>
   
+  <div class="group">
+    <%= f.label :show_in_menu, t("activerecord.attributes.page_type.show_in_menu", :default => "Show in menu?"), :class => :label %>
+    <%= f.check_box :show_in_menu %>
+    <span class="description"><%= t('forms.page_types.field_descriptions.show_in_menu')%></span>
+  </div>
+  
+  <div class="group">
+    <%= f.label :show_on_lists, t("activerecord.attributes.page_type.show_on_lists", :default => "Show in menu?"), :class => :label %>
+    <%= f.check_box :show_on_lists %>
+    <span class="description"><%= t('forms.page_types.field_descriptions.show_on_lists')%></span>
+  </div>
+  
   <ol id="property_types_fields">
     <%= f.fields_for :property_types do |fpt| %>
       <%= render :partial=>"property_type", :locals=>{:f=>fpt}%>

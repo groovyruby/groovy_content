@@ -2,6 +2,8 @@ class Page < ActiveRecord::Base
 
   scope :of_type, lambda { |page_type| where("page_type_id = ?", page_type.id) }
   scope :without_type, where('page_type_id is null')
+  scope :shown_on_lists, where('show_on_lists = ?', true)
+  scope :displayable_in_menu, where('show_in_menu = ?', true)
   scope :by_position, order('position ASC')
 
   belongs_to :page_type
@@ -20,7 +22,7 @@ class Page < ActiveRecord::Base
 
 
   accepts_nested_attributes_for :properties, :allow_destroy=>true
-  attr_accessible :title, :slug, :content, :properties_attributes, :parent_id, :template_id, :page_type_id
+  attr_accessible :title, :slug, :content, :properties_attributes, :parent_id, :template_id, :page_type_id, :show_in_menu, :show_on_lists
 
 
   before_validation :fill_in_slug
@@ -45,7 +47,9 @@ class Page < ActiveRecord::Base
       "content" => self.content,
       'to_param' => self.to_param,
       'sub_pages' => self.sub_pages.all,
+      'displayable_sub_pages' => self.sub_pages.displayable_in_menu.all,
       'siblings'  => self.parent.blank? ? [] : self.parent.sub_pages.all,
+      'displayable_siblings' => self.parent.blank? ? [] : self.parent.sub_pages.displayable_in_menu.all,
       'slug' => self.slug,
       'parent' => self.parent
     }

@@ -17,6 +17,7 @@ pl:
         slug: 'Generowany automatycznie'
         parent: ''
         template: ''
+        show_in_menu: 'Strony nie będą pokazywane jako elementy podrzędne strony nadrzędnej'
     sites:
       field_descriptions:
         title: ''
@@ -29,7 +30,10 @@ pl:
     page_types:
       field_descriptions:
         name: ''
-        content: ''
+        slug: 'Musi być unikatowy'
+        show_content: 'Pokazuj pole treści'
+        show_in_menu: 'Stron nie będą pokazywane jako elementy podrzędne strony nadrzędnej - domyślna wartość dla typu stron'
+        show_on_lists: 'Elementy nie będą umieszczane na listach, np. stron nadrzędnych'
     inquiry_forms:
       field_descriptions:
         name: ''

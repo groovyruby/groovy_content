@@ -1,5 +1,6 @@
 <%= form_for [:admin, @page], :html => { :class => :form, :multipart=>true } do |f| -%>
   <%= f.hidden_field :page_type_id %>
+  <%= f.hidden_field :show_on_lists %>
   <div class="group">
     <%= f.label :title, t("activerecord.attributes.page.title", :default => "Title"), :class => :label %>
     <%= f.text_field :title, :class => 'text_field' %>
@@ -22,7 +23,7 @@
   
   <div class="group">
     <%= f.label :parent_id, t("activerecord.attributes.page.parent_id", :default => "Parent"), :class => :label %>
-    <%= f.select :parent_id, [[]] | (f.object.new_record? ? current_site.pages : current_site.pages.where('id!=?', f.object.id)).all.map{|p| [p.title, p.id]}, :class => 'text_field' %>
+    <%= f.select :parent_id, [[]] | (f.object.new_record? ? current_site.pages : current_site.pages.where('id!=?', f.object.id)).shown_on_lists.all.map{|p| [p.title, p.id]}, :class => 'text_field' %>
     <span class="description"><%= t('forms.pages.field_descriptions.parent')%></span>
   </div>
 
@@ -37,6 +38,12 @@
     <%= f.label :template_id, t("activerecord.attributes.page.template_id", :default => "Template"), :class => :label %>
     <%= f.select :template_id, [[]] | current_site.templates.all.map{|t| [t.name, t.id]}, :class => 'text_field' %>
     <span class="description"><%= t('forms.pages.field_descriptions.template')%></span>
+  </div>
+  
+  <div class="group">
+    <%= f.label :show_in_menu, t("activerecord.attributes.page.show_in_menu", :default => "Show in menu?"), :class => :label %>
+    <%= f.check_box :show_in_menu %>
+    <span class="description"><%= t('forms.pages.field_descriptions.show_in_menu')%></span>
   </div>
         
   <div class="group navform wat-cf">

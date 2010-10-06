@@ -35,6 +35,8 @@ class Admin::PagesController < AdminController
         property.page_type = @page_type
         @page.properties << property
       end
+      @page.show_on_lists = @page_type.show_on_lists
+      @page.show_in_menu = @page.show_in_menu
     end
     respond_to do |format|
       format.html # new.html.erb

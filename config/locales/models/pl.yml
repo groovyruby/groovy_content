@@ -7,6 +7,7 @@ pl:
         slug: 'Adres url'
         parent_id: 'Strona nadrzędna'
         template_id: 'Szablon strony'
+        show_in_menu: 'Pokazywać w menu?'
       site:
         title: 'Tytuł strony'
         domain: 'Domena, pod którą ma być widoczna witryna'
@@ -26,6 +27,9 @@ pl:
       page_type:
         name: 'Nazwa'
         slug: 'Identyfikator'
+        show_content: 'Pokazywać treść?'
+        show_in_menu: 'Pokazywać w menu?'
+        show_on_lists: 'Pokazywać na listach?'
       inquiry_form:
         name: 'Nazwa'
         slug: 'Identyfikator'

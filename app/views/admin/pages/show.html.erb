@@ -1,7 +1,7 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul class="wat-cf">
-      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", admin_pages_path  %></li>
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", @page.page_type.blank? ? admin_pages_path : list_type_admin_page_type_path(@page.page_type_id)  %></li>
       <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_page_path(:page_type=>@page.page_type_id) %></li>
       <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_page_path %></li>
     </ul>

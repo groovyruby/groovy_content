@@ -1,4 +1,4 @@
-<% form_for @inquiry, :html=>{:multipart=>true, :class=>"inquiry_form inquiry_#{@inquiry.inquiry_form.name}"} do |f|%>
+<% form_for @inquiry, :html=>{:multipart=>true, :class=>"inquiry_form inquiry_#{@inquiry.inquiry_form.slug}"} do |f|%>
   <%= f.hidden_field :inquiry_form_id%>
   <% f.fields_for :inquiry_values do |iv| %>
     <%= render :partial=>"inquiry_value", :locals=>{:f=>iv}%>

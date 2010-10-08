@@ -32,6 +32,11 @@ pl:
       signed_up: 'Zostałeś zarejestrowany. Jeśli aktywowano odpowiednią opcję, wyślemy do Ciebie email potwierdzający rejestrację.'
       updated: 'Pomyślnie zaktualizowano informacje o Twoim koncie.'
       destroyed: 'Żegnaj! Twoje konto zostało usunięte.'
+      edit:
+        profile: 'Profil'
+        password: 'Pozostaw puste, jeśli nie chcesz zmieniac'
+        current_password: 'niezbędne by zatwiedzic zmiany w profilu'
+        update: 'Aktualizuje dane'
     unlocks:
       send_instructions: 'W ciągu kilku minut otrzymasz email z instrukcjami odblokowania konta.'
       unlocked: 'Twoje konto zostało odblokowane, jesteś zalogowany.'
@@ -39,3 +44,10 @@ pl:
       confirmation_instructions: 'Instrukcje aktywacji'
       reset_password_instructions: 'Instrukcje zmiany hasła'
       unlock_instructions: 'Instrukcje odblokowania'
+  activerecord:
+    attributes:
+      user:
+        email: 'Email'
+        password: 'Hasło'
+        password_confirmation: 'Potwierdzenie hasła'
+        current_password: 'Obecne hasło'

@@ -24,6 +24,7 @@
       <h1><a href="/"><%= s(:instance_name) %></a></h1>
       <div id="user-navigation">
         <ul class="wat-cf">
+          <li><%= link_to t('web-app-theme.profile', :default=>'Profile'), edit_user_registration_path %></li>
           <li><%= link_to t("web-app-theme.logout", :default => "Logout"), destroy_user_session_path, :class=>"logout" %></a></li>
         </ul>
       </div>

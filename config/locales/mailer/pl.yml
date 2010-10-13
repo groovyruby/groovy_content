@@ -1,0 +1,4 @@
+en:
+  inquiry_mailer:
+    inquiry_received:
+      subject: 'Nowe zgłoszenie: '

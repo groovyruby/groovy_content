@@ -1,0 +1,6 @@
+<%= @inquiry.inquiry_form.name %>
+
+
+<% for iv in @inquiry.inquiry_values.all %>
+  <%= iv.inquiry_field.name %>: <%= iv.field_value %>
+<% end %>

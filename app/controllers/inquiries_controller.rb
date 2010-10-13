@@ -15,6 +15,7 @@ class InquiriesController < GroovyContentController
     @inquiry.site = current_site
     respond_to do |format|
       if @inquiry.save
+        InquiryMailer.inquiry_received(@inquiry).deliver
         # It's bad, I know...
         render :action => "create"
       else

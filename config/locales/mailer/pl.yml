@@ -1,4 +1,4 @@
-en:
+pl:
   inquiry_mailer:
     inquiry_received:
-      subject: 'Nowe zgłoszenie: '
+      subject: 'Nowe zgłoszenie'

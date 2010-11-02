@@ -14,6 +14,7 @@ class PagesController < GroovyContentController
   def show
     @page = current_site.pages.where('slug=?', params[:id]).first
     @page = current_site.pages.find(params[:id]) if @page.blank?
+    @notice = flash[:notice]
   end
 
 end

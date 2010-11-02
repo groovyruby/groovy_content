@@ -21,7 +21,6 @@ class GroovyContentController < ApplicationController
   protected
     def fetch_menu
       @menu_items = current_site ? current_site.menu_items.visible.by_position.all : []
-      puts @menu_items
     end
 
     def fetch_templates
@@ -38,10 +37,8 @@ class GroovyContentController < ApplicationController
 
     def prepend_view_path_for_site
       # todo performance issue here - templates are cached on each request. lame.
-      logger.info "current_site.domain"
       s = current_site
       self.prepend_view_path(File.join(::Rails.root.to_s, 'app', 'views', s.domain)) unless s.blank?
-      logger.info self.view_paths.join("\n")
 
     end
 

@@ -32,7 +32,6 @@
         <ul class="wat-cf">
         <% if current_user and current_user.is_admin? %>
           <li><%= link_to t('groovy_content.modules.dashboard', :default=>"Dashboard"), admin_root_path %></li>
-          <li><%= link_to t('groovy_content.modules.sites', :default=>"Sites"), admin_sites_path %></li>
           <% if current_site %>
               <li><%= link_to t('groovy_content.modules.pages', :default=>"Pages"), admin_pages_path %></li>
             
@@ -45,8 +44,8 @@
               <% for inf in current_site.inquiry_forms.all %>
                   <li><%= link_to inf.name, list_type_admin_inquiry_form_path(inf) %></li>
               <% end %>
-              <li style="float: right; padding-right: 200px"><%= link_to t('groovy_content.modules.settings', :default=>"Settings"), admin_setting_path %></li>
           <% end %>
+          <li style="float: right; padding-right: 200px"><%= link_to t('groovy_content.modules.settings', :default=>"Settings"), admin_setting_path %></li>
         <% end %>
         </ul>
       </div>

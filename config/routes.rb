@@ -29,6 +29,9 @@ GroovyContent::Application.routes.draw do
     resource :setting
     resources :sites
     resources :templates
+    resources :users do
+      get 'switch_admin', :on=>:member
+    end
     root :to => "dashboard#index"
     match "dashboard/set_site_context", :to => "dashboard#set_site_context", :via => "post"
   end

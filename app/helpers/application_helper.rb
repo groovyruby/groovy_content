@@ -1,7 +1,8 @@
 module ApplicationHelper
-
+  
+  
   class GroovyContentFileSystem
-
+    
     def initialize(site)
       @site = site
     end
@@ -17,7 +18,9 @@ module ApplicationHelper
     Liquid::Template.file_system = GroovyContentFileSystem.new(current_site)
     @layout_template = page.template unless page.template.blank?
     @template = Liquid::Template.parse(@layout_template.content)
-    raw @template.render( 'page' => page, 'menu_items'=>@menu_items, 'page_type'=>page.page_type.blank? ? 'page' : page.page_type.slug, 'collections'=>@collections, 'path'=>request.path, 'notice'=>@notice )
+    raw @template.render( 'page' => page, 'menu_items'=>@menu_items, 'page_type'=>page.page_type.blank? ? 'page' : page.page_type.slug,
+      'collections'=>@collections, 'path'=>request.path, 'notice'=>@notice, 'forgery_token'=>@forgery_token,
+      'current_user'=>@current_user )
   end
 
   def generate_html(form_builder, method, options = {})

@@ -31,6 +31,8 @@ pl:
       submit_inquiry: "Wyślij"
   admin:
     dashboard:
+      index:
+        welcome_text: "Proszę pamiętać o wybraniu witryny z menu ulokowanego po prawej stronie"
       sidebar:
         site_context: Aktualny kontekst
         select_site: Wybierz aktywną witrynę
@@ -80,4 +82,8 @@ pl:
         edit: "Edycja formularza"
       list_type:
         all: "Wszystkie zgłoszenia"
-      
+    settings:
+      sidebar:
+        manage_users: "Zarządzaj użytkownikami"
+        manage_inquiry_forms: "Zarządzaj formularzami"
+        manage_page_types: "Zarządzaj typami stron"

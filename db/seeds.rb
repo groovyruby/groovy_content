@@ -6,6 +6,17 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-user = User.new({:email=>"admin@example.com", :password=>"q1w2e3", :password_confirmation=>"q1w2e3"})
-user.save
-user.confirm!
+unless User.find_by_email('admin@example.com')
+  user = User.new({:email=>"admin@example.com", :password=>"q1w2e3", :password_confirmation=>"q1w2e3"})
+  user.save
+  user.confirm!
+end
+
+unless Setting.find_by_identifier('instance_name')
+  s = Setting.new
+  s.identifier = 'instance_name'
+  s.value = 'GroovyContent'
+  s.field_type = 'string'
+  s.label = 'Instance name'
+  s.save
+end

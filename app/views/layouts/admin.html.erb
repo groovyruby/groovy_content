@@ -36,7 +36,7 @@
               <li><%= link_to t('groovy_content.modules.pages', :default=>"Pages"), admin_pages_path %></li>
             
               <li><%= link_to t('groovy_content.modules.menu_items', :default=>"Menu items"), admin_menu_items_path %></li>
-              <li><%= link_to t('groovy_content.modules.templates', :default=>"Templates"), admin_templates_path %></li>
+              
             
               <% for pt in current_site.page_types.all %>
                   <li><%= link_to pt.name, list_type_admin_page_type_path(pt) %></li>
@@ -44,6 +44,8 @@
               <% for inf in current_site.inquiry_forms.all %>
                   <li><%= link_to inf.name, list_type_admin_inquiry_form_path(inf) %></li>
               <% end %>
+              <li><%= link_to t('groovy_content.modules.templates', :default=>"Templates"), admin_templates_path %></li>
+              
           <% end %>
           <li style="float: right; padding-right: 200px"><%= link_to t('groovy_content.modules.settings', :default=>"Settings"), admin_setting_path %></li>
         <% end %>

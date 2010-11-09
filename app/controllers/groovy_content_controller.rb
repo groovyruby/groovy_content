@@ -13,7 +13,7 @@ class GroovyContentController < ApplicationController
 
 
   def current_site
-    s = Site.find_by_domain(request.domain)
+    s = Site.find_by_domain(request.host)
     s = Site.default.first unless s
     s
   end

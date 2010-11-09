@@ -16,6 +16,15 @@
     <%= f.check_box :is_default, :class => 'check_box' %>
     <span class="description"><%= t('forms.sites.field_descriptions.is_default')%></span>
   </div>
+  
+  <% if f.object.new_record? and Site.count > 0 %>
+    <div class="group">
+      <%= f.label :clone_from, t("activerecord.attributes.site.clone_from", :default => "Clone from"), :class => :label %>
+      <%= f.select :clone_from, [[]] | Site.all.map{|s| [s.title, s.id]}, :class => 'text_field' %>
+      <span class="description"><%= t('forms.sites.field_descriptions.clone_from', :default=>'')%></span>
+    </div>
+  <% end %>
+  
         
 <div class="group navform wat-cf">
   <button class="button" type="submit">

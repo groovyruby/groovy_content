@@ -18,6 +18,7 @@ pl:
         parent: ''
         template: ''
         show_in_menu: 'Strony nie będą pokazywane jako elementy podrzędne strony nadrzędnej'
+        privacy_level: Public - strona widoczna; Protected - strona widoczna tylko dla zalogowanych
     sites:
       field_descriptions:
         title: ''

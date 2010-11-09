@@ -34,17 +34,29 @@
     <% end %>
   </div>
   
-  <div class="group">
-    <%= f.label :template_id, t("activerecord.attributes.page.template_id", :default => "Template"), :class => :label %>
-    <%= f.select :template_id, [[]] | current_site.templates.all.map{|t| [t.name, t.id]}, :class => 'text_field' %>
-    <span class="description"><%= t('forms.pages.field_descriptions.template')%></span>
-  </div>
+  <fieldset>
+    <legend>Opcje zaawansowane</legend>
+      
+    <div class="group">
+      <%= f.label :template_id, t("activerecord.attributes.page.template_id", :default => "Template"), :class => :label %>
+      <%= f.select :template_id, [[]] | current_site.templates.all.map{|t| [t.name, t.id]}, :class => 'text_field' %>
+      <span class="description"><%= t('forms.pages.field_descriptions.template')%></span>
+    </div>
   
-  <div class="group">
-    <%= f.label :show_in_menu, t("activerecord.attributes.page.show_in_menu", :default => "Show in menu?"), :class => :label %>
-    <%= f.check_box :show_in_menu %>
-    <span class="description"><%= t('forms.pages.field_descriptions.show_in_menu')%></span>
-  </div>
+    <div class="group">
+      <%= f.label :show_in_menu, t("activerecord.attributes.page.show_in_menu", :default => "Show in menu?"), :class => :label %>
+      <%= f.check_box :show_in_menu %>
+      <span class="description"><%= t('forms.pages.field_descriptions.show_in_menu')%></span>
+    </div>
+    
+    <div class="group">
+      <%= f.label :privacy_level, t("activerecord.attributes.page.privacy_level", :default => "Privacy level"), :class => :label %>
+      <% opts = Page::PRIVACY_LEVELS; opts.delete(:private) %>
+      <%= f.select :privacy_level, opts, :class => 'text_field' %>
+      <span class="description"><%= t('forms.pages.field_descriptions.privacy_level')%></span>
+    </div>
+    
+  </fieldset>
         
   <div class="group navform wat-cf">
     <button class="button" type="submit">

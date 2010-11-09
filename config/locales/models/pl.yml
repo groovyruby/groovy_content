@@ -8,6 +8,7 @@ pl:
         parent_id: 'Strona nadrzędna'
         template_id: 'Szablon strony'
         show_in_menu: 'Pokazywać w menu?'
+        privacy_level: Widoczność
       site:
         title: 'Tytuł strony'
         domain: 'Domena, pod którą ma być widoczna witryna'

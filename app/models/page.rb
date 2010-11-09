@@ -1,10 +1,13 @@
 class Page < ActiveRecord::Base
-
+  PRIVACY_LEVELS = {:public=>0, :protected=>1, :private=>2}
+  
+  
   scope :of_type, lambda { |page_type| where("page_type_id = ?", page_type.id) }
   scope :without_type, where('page_type_id is null')
   scope :shown_on_lists, where('show_on_lists = ?', true)
   scope :displayable_in_menu, where('show_in_menu = ?', true)
   scope :by_position, order('position ASC')
+  scope :public, where('privacy_level=?', Page::PRIVACY_LEVELS[:public])
 
   belongs_to :page_type
   belongs_to :parent, :class_name => "Page", :foreign_key => "parent_id"
@@ -22,7 +25,7 @@ class Page < ActiveRecord::Base
 
 
   accepts_nested_attributes_for :properties, :allow_destroy=>true
-  attr_accessible :title, :slug, :content, :properties_attributes, :parent_id, :template_id, :page_type_id, :show_in_menu, :show_on_lists
+  attr_accessible :title, :slug, :content, :properties_attributes, :parent_id, :template_id, :page_type_id, :show_in_menu, :show_on_lists, :privacy_level
 
 
   before_validation :fill_in_slug
@@ -50,6 +53,8 @@ class Page < ActiveRecord::Base
       'displayable_sub_pages' => self.sub_pages.displayable_in_menu.all,
       'siblings'  => self.parent.blank? ? [] : self.parent.sub_pages.all,
       'displayable_siblings' => self.parent.blank? ? [] : self.parent.sub_pages.displayable_in_menu.all,
+      'public_displayable_sub_pages' => self.sub_pages.displayable_in_menu.public.all,
+      'public_displayable_siblings' =>  self.parent.blank? ? [] : self.parent.sub_pages.public.displayable_in_menu.all,
       'slug' => self.slug,
       'parent' => self.parent
     }

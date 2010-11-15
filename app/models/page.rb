@@ -62,7 +62,7 @@ class Page < ActiveRecord::Base
     self.properties.each do |p|
       case p.property_type.field_type
         when 'file'
-          liquid[p.property_type.identifier] = p.attachment.url
+          liquid[p.property_type.identifier] = p.attachment_file_name.blank? ? "" : p.attachment.url 
         when 'image'
           liquid[p.property_type.identifier+"_original"] = p.image.url
           liquid[p.property_type.identifier+"_limited"] = p.image.url(:limited)

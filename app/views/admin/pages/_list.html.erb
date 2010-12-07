@@ -4,10 +4,13 @@
     <table class="table">
       <tr>             
         <th class="first">ID</th>
-                  <th>
+        <th>
           <%= t("activerecord.attributes.page.title", :default => t("activerecord.labels.title", :default => "Title")) %>
         </th>
-                  <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+        <th>
+          <%= t("activerecord.attributes.page.parent_id", :default => t("activerecord.labels.parent_id", :default => "Parent")) %>
+        </th>
+        <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
         <th class="last">&nbsp;</th>
       </tr>
       <% @pages.each do |page| -%>
@@ -15,8 +18,11 @@
         <td>
           <%= page.id %>
         </td>
-                  <td>
+        <td>
           <%= link_to page.title, admin_page_path(page) %>
+        </td>
+        <td>
+          <%= page.parent.title unless page.parent.blank? %>
         </td>
                   <td>
           <%= page.created_at %>

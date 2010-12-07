@@ -8,6 +8,7 @@ class Page < ActiveRecord::Base
   scope :displayable_in_menu, where('show_in_menu = ?', true)
   scope :by_position, order('position ASC')
   scope :public, where('privacy_level=?', Page::PRIVACY_LEVELS[:public])
+  scope :roots, where('parent_id is null')
 
   belongs_to :page_type
   belongs_to :parent, :class_name => "Page", :foreign_key => "parent_id"
@@ -75,7 +76,6 @@ class Page < ActiveRecord::Base
     end unless self.properties.blank?
     liquid
   end
-  
 
 
 end

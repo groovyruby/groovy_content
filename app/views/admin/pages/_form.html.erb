@@ -23,7 +23,7 @@
   
   <div class="group">
     <%= f.label :parent_id, t("activerecord.attributes.page.parent_id", :default => "Parent"), :class => :label %>
-    <%= f.select :parent_id, pages_for_parent_select(f.object), :class => 'text_field' %>
+    <%= f.select :parent_id, pages_for_parent_select(f.object, {:include_blank=>true}), :class => 'text_field' %>
     <span class="description"><%= t('forms.pages.field_descriptions.parent')%></span>
   </div>
 
